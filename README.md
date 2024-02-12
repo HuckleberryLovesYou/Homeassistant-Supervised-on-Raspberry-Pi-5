@@ -9,7 +9,7 @@ security=apparmor
 kernel=kernel8.img # at least required if you use pi4 as homeassistant version
 ```
 
-# Download and Install [The Banger Tech Utility](https://github.com/BangerTech/The-BangerTECH-Utility/tree/development) tool for easier installation
+# Download and Install [The Banger Tech Utility](https://github.com/BangerTech/The-BangerTECH-Utility/tree/development) tool for easier installation of Docker-ce
 ```
 sudo wget https://raw.githubuserconten>.com/BangerTech/The-BangerTECH-Utility/development/bangertech_utility_arm.sh
 ```
