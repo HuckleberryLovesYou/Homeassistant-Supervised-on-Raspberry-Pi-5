@@ -30,7 +30,7 @@ sh bangertech_utility_arm.sh
 
 ## Very Important
 **By installing e.g. Portainer or other completely unsupported software, Homeassistant might not start or will print out an critical error. By having a critical error you won't be able to restore a Backup and add an add-on!**
-### Make sure to look into [here]() to find a workaround
+### Make sure to look into [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/main/Homeassistant%20Supervised%20not%20working%20with%20Portainer.md) to find a workaround
 
 You can navigate with the arrow keys, select or deselect with the space bar and finish by hitting enter
 If getting prompted if you want to reboot, hit enter to reboot
