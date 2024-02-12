@@ -99,6 +99,13 @@ Using Tab, the filename completes itself after a few characters
 ```
 dpkg -i os-agent_%Your Version Number_linux_x86_64.deb
 ```
+You can test if the installation was successful by running:
+```
+gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
+```
+This should **NOT** return an error.
+You might need to install libglib2.0-bin to get the gdbus command
+If you get an object introspection with interface etc. OS Agent is working as expected.
 
 # Download homeassistant-supervised
 Today, the newest version is 1.6.0
