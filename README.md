@@ -4,7 +4,7 @@ This is a tutorial about the installation of Homeassistant Supervised on your Ra
 # First of all - Why even HA-Supervised? 
 It's pretty simple:
 
-```
+```python
 want_addons = %true/false%
 want_control_over_system = %true/false%
 
