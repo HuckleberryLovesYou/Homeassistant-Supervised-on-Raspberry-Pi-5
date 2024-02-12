@@ -30,6 +30,7 @@ sh bangertech_utility_arm.sh
 
 ## Very Important
 **By installing e.g. Portainer or other unsupported software, Homeassistant might not start or will print out an critical error. By having a critical error you won't be able to restore a Backup and add an add-on!**
+### Check out 
 
 You can navigate with the arrow keys, select or deselect with the space bar and finish by hitting enter
 If getting prompted if you want to reboot, hit enter to reboot
