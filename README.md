@@ -60,19 +60,19 @@ apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus sy
 
 3. Command
 ```
-apt install\
-apparmor\
-cifs-utils\
-curl\
-dbus\
-jq\
-libglib2.0-bin\
-lsb-release\
-network-manager\
-nfs-common\
-systemd-journal-remote\
-systemd-resolved\
-udisks2\
+apt install \
+apparmor \
+cifs-utils \
+curl \
+dbus \
+jq \
+libglib2.0-bin \
+lsb-release \
+network-manager \
+nfs-common \
+systemd-journal-remote \
+systemd-resolved \
+udisks2 \
 wget -y
 ```
 
