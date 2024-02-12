@@ -1,5 +1,5 @@
 # Homeassistant-Supervised-on-Raspberry-Pi-5
-This is a tutorial about the installation of Homeassistant Supervised on your Raspberry Pi 5
+This is a tutorial about the installation of Homeassistant Supervised on your Raspberry Pi 5. If something doesn't work, make sure to check out the Troubleshooting Section at the bottom of this Readme.md-File
 
 # First of all - Why even HA-Supervised? 
 It's pretty simple:
@@ -180,3 +180,15 @@ E.g.http://192.168.2.5:8213
 http://<Your Pi’s hostname>:8213
 ```
 E.g.http://raspberrypi:8123 # Standard hostname is raspberrypi
+
+
+
+
+
+# Troubleshooting
+
+1. If something goes wrong by the Installation of Homeassistant Installer, you can try to uninstall the OS-Agent with the following and then try again to install Homeassistant Installer by using the following command
+```
+
+```
+
