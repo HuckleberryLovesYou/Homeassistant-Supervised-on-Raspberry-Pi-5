@@ -130,7 +130,7 @@ If near the end of the output you see following everything worked out fine
 After setup finished without errors you can go on
 
 Restart your entire system with the following command
-It’s ```NOT``` enough to have the created docker container restarted
+It’s **NOT** enough to have the created docker container restarted
 ```
 reboot
 ```
@@ -145,7 +145,7 @@ hostname - I
 ```
 http://<Your Pi's IP-Adress>:8213
 ```
-E.g.http://<192.168.2.5>:8213
+E.g.http://192.168.2.5:8213
 ```
 http://<Your Pi’s hostname>:8213
 ```
