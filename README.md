@@ -1,6 +1,25 @@
 # Homeassistant-Supervised-on-Raspberry-Pi-5
 This is a tutorial about the installation of Homeassistant Supervised on your Raspberry Pi 5
 
+# First of all - Why even HA-Supervised? 
+It's pretty simple:
+
+```
+want_addons = %true/false%
+want_control_over_system = %true/false%
+
+if want_addons == true:
+   if want_control_over_system == true:
+      print("Get HA-Supervised")
+   else:
+     print("Get HA-OS") 
+else:
+   print("Get HA-Core")
+```
+Or in words:
+If you want to use add-ons then the only option is to use HA-OS or HA-Supervised
+If you don't want add-ons and only care about integrations, then you can use HA-Core
+If you decide to want add-ons you can now either decide between, giving away all of your possibilities and just have wasted 90 bucks on a pi 5 which isn't used more than 10% or having nearly every possible control about your system and not being restricted by your OS.  
 # Setting up your kernel settings
 Put the following 3 lines in your config.txt-File in the boot folder of your Raspberry Pi 5
 ```
