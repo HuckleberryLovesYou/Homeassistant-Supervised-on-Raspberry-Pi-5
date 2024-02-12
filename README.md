@@ -61,7 +61,7 @@ You might have to restart depending on of there were a kernel update going on or
 apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote -y
 ```
 
-3. Command
+2. Command
 ```
 apt install \
 apparmor \
