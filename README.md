@@ -19,9 +19,11 @@ else:
 Or in words:
 If you want to use add-ons then the only option is to use HA-OS or HA-Supervised
 If you don't want add-ons and only care about integrations, then you can use HA-Core
-If you decide to want add-ons you can now either decide between, giving away all of your possibilities and just have wasted 90 bucks on a pi 5 which isn't used more than 10% or having nearly every possible control about your system and not being restricted by your OS.  
+If you decide to want add-ons you can now either decide between, giving away all of your possibilities and just have wasted 90 bucks on a pi 5 which isn't used more than 10% or having nearly every possible control about your system and not being restricted by your OS.
+
+Or click [here](https://community-assets.home-assistant.io/original/4X/c/c/e/ccef6f3b100c0ca1c135851dbdea598502440711.png) to see the overview of all installation methods
 # Setting up your kernel settings
-Put the following 3 lines in your config.txt-File in the boot folder of your Raspberry Pi 5
+Put these 3 lines in your config.txt-File in the boot folder of your Raspberry Pi 5
 ```
 apparmor=1
 security=apparmor
