@@ -189,6 +189,6 @@ E.g.http://raspberrypi:8123 # Standard hostname is raspberrypi
 
 1. If something goes wrong by the Installation of Homeassistant Installer, you can try to uninstall the OS-Agent with the following and then try again to install Homeassistant Installer by using the following command
 ```
-
+sudo dpkg -r os-agent
 ```
 
