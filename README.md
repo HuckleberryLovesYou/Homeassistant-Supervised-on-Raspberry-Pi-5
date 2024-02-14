@@ -23,13 +23,19 @@ If you decide to want add-ons you can now either decide between, giving away all
 
 Or click [here](https://community-assets.home-assistant.io/original/4X/c/c/e/ccef6f3b100c0ca1c135851dbdea598502440711.png) to see the overview of all installation methods
 # Setting up your kernel settings
-Put these 3 lines in your config.txt-File in the boot folder of your Raspberry Pi 5
+Put the following 3 lines in your config.txt-File of your Raspberry Pi 5
+To take affect, you have to reboot the Pi after editing, if done over ssh
 ```
-apparmor=1
-security=apparmor
-kernel=kernel8.img # at least required if you use pi4 as homeassistant version
+sudo nano /boot/firmware/config.txt
 ```
-
+```
+# Own Edits
+apparmor=1 security=apparmor
+kernel=kernel8.img
+```
+```
+sudo reboot
+```
 # Download and Install [The Banger Tech Utility](https://github.com/BangerTech/The-BangerTECH-Utility/tree/development) tool for easier installation of Docker-ce
 ```
 sudo wget https://raw.githubuserconten>.com/BangerTech/The-BangerTECH-Utility/development/bangertech_utility_arm.sh
