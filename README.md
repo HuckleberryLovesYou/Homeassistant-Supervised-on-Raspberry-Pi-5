@@ -29,6 +29,7 @@ To take affect, you have to reboot the Pi after editing, if done over ssh
 sudo nano /boot/firmware/config.txt
 ```
 ```
+# 3 lines to put in your config.txt-File
 # Own Edits
 apparmor=1 security=apparmor
 kernel=kernel8.img
