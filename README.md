@@ -1,5 +1,5 @@
 # Homeassistant-Supervised-on-Raspberry-Pi-5
-This is a tutorial about the installation of Homeassistant Supervised on your Raspberry Pi 5. If something doesn't work, make sure to check out the Troubleshooting Section at the bottom of this Readme.md-File or take a look at their own Helpfiles ion this Repository
+This is a tutorial about the installation of Homeassistant Supervised on your Raspberry Pi 5. If something doesn't work, make sure to check out the Troubleshooting Section at the bottom of this Readme.md-File or take a look at their own Helpfiles ion this Repository.
 
 # First of all - Why even HA-Supervised? 
 It's pretty simple:
