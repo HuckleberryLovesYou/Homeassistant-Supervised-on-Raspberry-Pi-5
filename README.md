@@ -1,5 +1,5 @@
 # Homeassistant-Supervised-on-Raspberry-Pi-5
-This is a tutorial about the installation of Homeassistant Supervised on your Raspberry Pi 5. If something doesn't work, make sure to check out the Troubleshooting Section at the bottom of this Readme.md-File
+This is a tutorial about the installation of Homeassistant Supervised on your Raspberry Pi 5. If something doesn't work, make sure to check out the Troubleshooting Section at the bottom of this Readme.md-File or take a look at their own Helpfiles ion this Repository
 
 # First of all - Why even HA-Supervised? 
 It's pretty simple:
@@ -22,19 +22,30 @@ If you don't want add-ons and only care about integrations, then you can use HA-
 If you decide to want add-ons you can now either decide between, giving away all of your possibilities and just have wasted 90 bucks on a pi 5 which isn't used more than 10% or having nearly every possible control about your system and not being restricted by your OS.
 
 Or click [here](https://community-assets.home-assistant.io/original/4X/c/c/e/ccef6f3b100c0ca1c135851dbdea598502440711.png) to see the overview of all installation methods
-# Setting up your kernel settings
-Put the following 3 lines in your config.txt-File of your Raspberry Pi 5.
+# Setting up your kernel and security settings
+Follow the instructions given to you by the comments in each code section
 To take affect, you have to reboot the Pi after editing the file
 ```
+# execute the following to edit the config.txt
 sudo nano /boot/firmware/config.txt
 ```
 ```
-# 3 lines to put in your config.txt-File
+# put the next lines **somewhere** in your **config.txt**-File
 # Own Edits
 apparmor=1 security=apparmor
 kernel=kernel8.img
+# exit nano with saving
 ```
 ```
+# execute the following to edit the cmdline.txt
+sudo nano /boot/firmware/cmdline.txt
+```
+```
+# Append the following to the **end** of the line in the **cmdline.txt**-File
+apparmor=1 security=apparmor
+```
+```
+#reboot now to let the edits take effect
 sudo reboot
 ```
 # Download and Install [The Banger Tech Utility](https://github.com/BangerTech/The-BangerTECH-Utility/tree/development) tool for easier installation of Docker-ce
