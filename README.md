@@ -23,8 +23,8 @@ If you decide to want add-ons you can now either decide between, giving away all
 
 Or click [here](https://community-assets.home-assistant.io/original/4X/c/c/e/ccef6f3b100c0ca1c135851dbdea598502440711.png) to see the overview of all installation methods
 # Setting up your kernel settings
-Put the following 3 lines in your config.txt-File of your Raspberry Pi 5
-To take affect, you have to reboot the Pi after editing, if done over ssh
+Put the following 3 lines in your config.txt-File of your Raspberry Pi 5.
+To take affect, you have to reboot the Pi after editing the file
 ```
 sudo nano /boot/firmware/config.txt
 ```
