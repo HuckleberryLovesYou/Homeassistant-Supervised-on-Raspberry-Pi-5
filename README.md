@@ -130,6 +130,7 @@ wget %Your above copied link%
 It should then look like the following example except the version-number
 ```
 wget https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_aarch64.deb
+# You can type "ls" to ensure the download was succesful
 ```
 
 # Install os-agent
@@ -152,6 +153,8 @@ By using the following command you automatically download the latest version of 
 If you still want to check, you can do this on this [Github page](https://github.com/home-assistant/supervised-installer/releases/)
 ```
 wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
+# You can type "ls" to ensure the download was succesful
+# The -O  is there to overwrite exiting files if there are, which makes troubleshooting easier, by having no need to uninstall it after an error
 ```
 
 # Install Homeassistant
