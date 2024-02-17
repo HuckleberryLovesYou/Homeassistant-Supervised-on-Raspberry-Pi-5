@@ -6,7 +6,7 @@ Didn't found a fix for your Prolbem? Feel free to open an issue in this reposito
 
 Found something, which wasn't described right or bad? Feel free to open an issue in this repository!
 
-# First of all - Why even HA-Supervised? 
+## First of all - Why even HA-Supervised? 
 It's pretty simple:
 
 ```python
@@ -28,6 +28,25 @@ If you don't want add-ons and only care about integrations, then you can use HA-
 If you decide to want add-ons you can now either decide between, giving away all of your possibilities and just have wasted 90 bucks on a pi 5 which isn't used more than 10% or having nearly every possible control about your system and not being restricted by your OS.
 
 Or click [here](https://community-assets.home-assistant.io/original/4X/c/c/e/ccef6f3b100c0ca1c135851dbdea598502440711.png) to see the overview of all installation methods
+
+### Supported or Unsupported
+Now, as we're getting closer to the installation, we need to talk about Supported or Unsupported.
+
+First of all, does Unsupported mean I can't use HA?
+
+No, it doesn't. It more or less means, that it's more likely to might experience any kind of bugs, lags or crashes. It doesn't mean you have to experience any issues! For my part, I didn't experienced any heavy bugs!
+
+
+When am I running a unsupported System?
+
+Your running Raspberry Pi OS? -> Unsupported. Your running HA-Supervised for pi4? -> Unsupported. Your running something else except for addons with the same docker-instance -> Unsupported. And the list goes on. For the entire list take a look [here](https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md)
+
+
+What could be the problem with having a unsupported system?
+
+No support from HA-Moderators, No way of reporting bug. For a more detailed variant take a look [here](https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md)
+
+
 # Setting up your kernel and security settings
 Follow the instructions given to you by the comments in each code section.
 To take affect, you have to reboot the Pi after editing the file.
@@ -49,6 +68,7 @@ sudo nano /boot/firmware/cmdline.txt
 ```
 # Append the following to the **end** of the line in the **cmdline.txt**-File
 apparmor=1 security=apparmor
+# exit nano with saving
 ```
 ```
 #reboot now to let the edits take effect
