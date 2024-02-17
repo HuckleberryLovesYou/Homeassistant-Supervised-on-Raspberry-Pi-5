@@ -1,5 +1,10 @@
 # Homeassistant-Supervised-on-Raspberry-Pi-5
-This is a tutorial about the installation of Homeassistant Supervised on your Raspberry Pi 5. If something doesn't work, make sure to check out the Troubleshooting Section at the bottom of this Readme.md-File or take a look at their own Helpfiles ion this Repository.
+This is a tutorial about the installation of Homeassistant Supervised on your Raspberry Pi 5. 
+### If something doesn't work, make sure to check out the Troubleshooting Section at the bottom of this Readme.
+
+Didn't found a fix for your Prolbem? Feel free to open an issue in this repository!
+
+Found something, which wasn't described right or bad? Feel free to open an issue in this repository!
 
 # First of all - Why even HA-Supervised? 
 It's pretty simple:
@@ -17,14 +22,15 @@ else:
    print("Get HA-Core")
 ```
 Or in words:
-If you want to use add-ons then the only option is to use HA-OS or HA-Supervised
-If you don't want add-ons and only care about integrations, then you can use HA-Core
+
+If you want to use add-ons then the only option is to use HA-OS or HA-Supervised.
+If you don't want add-ons and only care about integrations, then you can use HA-Core.
 If you decide to want add-ons you can now either decide between, giving away all of your possibilities and just have wasted 90 bucks on a pi 5 which isn't used more than 10% or having nearly every possible control about your system and not being restricted by your OS.
 
 Or click [here](https://community-assets.home-assistant.io/original/4X/c/c/e/ccef6f3b100c0ca1c135851dbdea598502440711.png) to see the overview of all installation methods
 # Setting up your kernel and security settings
-Follow the instructions given to you by the comments in each code section
-To take affect, you have to reboot the Pi after editing the file
+Follow the instructions given to you by the comments in each code section.
+To take affect, you have to reboot the Pi after editing the file.
 ```
 # execute the following to edit the config.txt
 sudo nano /boot/firmware/config.txt
@@ -58,42 +64,42 @@ Change the permissions of the tool
 sudo chmod +x bangertech_utility_arm.sh
 ```
 
-exec the utility by using sh like shown in the following
+execute the utility by using sh like shown in the following
 It takes about 20 seconds to start
 ```
 sh bangertech_utility_arm.sh
 ```
 
-# Now the main installation of docker-ce
+# Now the main installation of docker-ce (community editon)
 **It might take up to a minute. Don’t cancel at any time!**
 
 ## Very Important
-**By installing e.g. Portainer or other completely unsupported software, Homeassistant might not start or will print out an critical error. By having a critical error you won't be able to restore a Backup and add an add-on!**
+**By installing e.g. Portainer or other unsupported software, Homeassistant might not start or will print out an critical error. By having a critical error you won't be able to restore a Backup and add an add-on!**
 ### Make sure to look into [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/main/Homeassistant%20Supervised%20not%20working%20with%20Portainer.md) to find a workaround
 
 
-Now with that out of the way, you can navigate with the arrow keys, select or deselect with the space bar and finish by hitting enter
-If getting prompted if you want to reboot, hit enter to reboot
-In the following fields, you should only pick “Docker+Docker-Compose” and then follow the Steps presented by the Tool
+Now with that out of the way, you can navigate with the arrow keys, select or deselect with the space bar and finish by hitting enter.
+If getting prompted if you want to reboot, hit enter to reboot.
+In the following fields, you should only pick “Docker+Docker-Compose” and then follow the Steps presented by the Tool.
 
 You can check if the docker-installation works by using the following command
 ```
 sudo docker run hello-world
 ```
 # Making your device ready to run Homeassistant
-From now on everything needs to be executed as root and does **NOT** support sudo anymore
-So, change into root-mode
+From now on everything needs to be executed as root and does **NOT** support sudo anymore.
+So, change into root-mode:
 ```
 sudo su -
 ```
 
-Update every Package on your Device
+Update every Package on your Device.
 ```
 apt update && apt upgrade -y
 ```
 
 ## Installation of dependencies
-Now install all the required Dependencies by using the next two commands
+Now install all the required Dependencies by using the next two commands.
 You might have to restart depending on of there were a kernel update going on or not. Do, if prompted so.
 1. Command
 ```
@@ -123,19 +129,19 @@ Today, the newest verison is 1.6.0
 If you do that in the future, you may want to check for a newer version.
 To do that, go to this [GitHub page](https://github.com/home-assistant/os-agent/releases) 
 Scroll to the newest assets and right-click on the asset called os-agent_%Newest Version%_linux_**aarch64.deb**
-Then click on **copy link address** and put it in the command below
+Hit right click while hovering the file. Then click on **copy link address** and put it in the command below.
 ```
 wget %Your above copied link%
 ```
-It should then look like the following example except the version-number
+It should then look like the following example except the version-number.
 ```
 wget https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_aarch64.deb
 # You can type "ls" to ensure the download was succesful
 ```
 
 # Install os-agent
-To do that, we use dpkg
-Using Tab, the filename completes itself after a few characters
+To do that, we use dpkg.
+Using Tab, the filename completes itself after a few characters.
 ```
 dpkg -i os-agent_%Your Version Number_linux_x86_64.deb
 ```
@@ -144,30 +150,29 @@ You can test if the installation was successful by running:
 gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
 ```
 This should **NOT** return an error.
-You might need to install libglib2.0-bin to get the gdbus command
+You might need to install libglib2.0-bin to get the gdbus command.
 If you get an object introspection with interface etc. OS Agent is working as expected.
 
 # Download homeassistant-supervised
-Today, the newest version is 1.6.0
-By using the following command you automatically download the latest version of Homeassistant
+Today, the newest version is 1.6.0.
+By using the following command you automatically download the latest version of Homeassistant.
 If you still want to check, you can do this on this [Github page](https://github.com/home-assistant/supervised-installer/releases/)
 ```
 wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
 # You can type "ls" to ensure the download was succesful
-# The -O  is there to overwrite exiting files if there are, which makes troubleshooting easier, by having no need to uninstall it after an error
+# The -O  is there to overwrite exiting files if there are, which makes troubleshooting easier, by having no need to uninstall it after an error.
 ```
 
 # Install Homeassistant
-To install execute the following command
+To install execute the following command.
 ```
 apt install ./homeassistant-supervised.deb
 ```
 
-During the Installation, you get asked “Select machine type”
-At the day as I’m writing this, you have to select “raspberrypi4-64” or “raspberrypi4-32” depending on your OS
-In the future, there might be a pi5-64bit version. If there is, then use that.
+During the Installation, you get asked “Select machine type”.
+Choose the "pi5-64bit" version.
 
-If near the end of the output you see following everything worked out fine
+If near the end of the output you see following everything worked out fine.
 ```
 [info] Install supervisor startup scripts
 [info] Install AppArmor scripts
@@ -178,18 +183,18 @@ If near the end of the output you see following everything worked out fine
 [info] http://<homeassistant.local>:8123 or using the IP address of your pi # remove the “>” and “<”
 [info] machine: http://<Your Pi’s IP Address>:8123
 ```
-After setup finished without errors you can go on
+After setup finished without errors you can go on.
 
-Restart your entire system with the following command
-It’s **NOT** enough to have the created docker container restarted
+Restart your entire system with the following command.
+It’s **NOT** enough to have the created docker container restarted.
 ```
 reboot
 ```
 # Accessing your Homeassistant WebGUI
-Access your Homeassistant-WebGUI by entering the following in your browser’s address bar
-Make sure to use **http** and **NOT** https
-You can also use the hostname that you set, like shown in the second example
-To find out your Pi's IP you can either look at your routers dashboard or use the following command and extract the IP
+Access your Homeassistant-WebGUI by entering the following in your browser’s address bar.
+Make sure to use **http** and **NOT** https.
+You can also use the hostname that you set, like shown in the second example.
+To find out your Pi's IP you can either look at your routers dashboard or use the following command and extract the IP.
 ```
 hostname - I
 ```
@@ -205,11 +210,11 @@ E.g.http://raspberrypi:8123 # Standard hostname is raspberrypi
 
 
 
-
 # Troubleshooting
 
-1. If something goes wrong by the Installation of Homeassistant Installer, you can try to uninstall the OS-Agent with the following and then try again to install Homeassistant Installer by using the following command
+1. If something goes wrong by the Installation of Homeassistant Installer, you can try to uninstall the OS-Agent with the following
 ```
 sudo dpkg -r os-agent
 ```
-
+After that you can dwonload the right version of the os-agent and reinstall it.
+Now, install Homeassistant with the same command as mentioned above, because it already overwrites everthing
