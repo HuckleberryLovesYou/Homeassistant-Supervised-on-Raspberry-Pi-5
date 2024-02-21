@@ -76,7 +76,7 @@ sudo reboot
 ```
 # Download and Install [The Banger Tech Utility](https://github.com/BangerTech/The-BangerTECH-Utility/tree/development) tool for easier installation of Docker-ce
 ```
-sudo wget https://raw.githubuserconten>.com/BangerTech/The-BangerTECH-Utility/development/bangertech_utility_arm.sh
+sudo wget https://raw.githubusercontent.com/BangerTech/The-BangerTECH-Utility/development/bangertech_utility_arm.sh
 ```
 
 Change the permissions of the tool
