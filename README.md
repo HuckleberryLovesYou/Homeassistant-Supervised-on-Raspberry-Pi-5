@@ -231,10 +231,62 @@ E.g.http://raspberrypi:8123 # Standard hostname is raspberrypi
 
 
 # Troubleshooting
-
-1. If something goes wrong by the Installation of Homeassistant Installer, you can try to uninstall the OS-Agent with the following
+## Error while installing Homeassistant-Supervised.deb caused by wrong os-agent
+If something goes wrong by the Installation of Homeassistant Installer, you can try to uninstall the OS-Agent with the following
 ```
 sudo dpkg -r os-agent
 ```
 After that you can dwonload the right version of the os-agent and reinstall it.
-Now, install Homeassistant with the same command as mentioned above, because it already overwrites everthing
+```
+dpkg -i os-agent_%Your Version Number_linux_x86_64.deb
+```
+Now, install Homeassistant with the same command as mentioned above, because it already overwrites everthing.
+
+
+## Error installing Homeassistant-Supervised.deb caused by [postinst-script](https://github.com/home-assistant/supervised-installer/blob/main/homeassistant-supervised/DEBIAN/postinst) #untested reffering to this [issue](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/2)
+Error looks like the following:
+```
+needrestart is being skipped since dpkg has failed
+N: Download is performed unsandboxed as root as file '/root/homeassistant-supervised.deb' couldn't be accessed by user '_apt'. - pkgAcquire::Run (13: Permission denied)
+E: Sub-process /usr/bin/dpkg returned an error code (1)
+```
+That seems to be caused by systemd.resolved not being installed but try the following first:
+```
+sudo systemctl restart systemd-resolved
+```
+If a error occured or it didn't work execute the following command to install systemd.resolved.
+**Ensure that you know what you are doing, because it seems to be possible that a name resolution error occures.**
+```
+sudo apt install systemd-resolved
+```
+And restart systemd.resolved
+```
+sudo systemctl restart systemd-resolved
+```
+It should work now.
+If it doesn't work now, ensure your name resolution still works.
+To test your name resolution install dnsutils
+```
+sudo apt-get install dnsutils
+```
+Now try a foreward lookup with the following
+```
+host dns.google
+```
+Response should look like:
+```
+dns.google has address 8.8.8.8
+dns.google has address 8.8.4.4
+dns.google has IPv6 address 2001:4860:4860::8844
+dns.google has IPv6 address 2001:4860:4860::8888
+```
+And now try a reverse lookup with the following
+```
+host 1.1.1.1
+```
+Your response should look like:
+```
+1.1.1.1.in-addr.arpa domain name pointer one.one.one.one.
+```
+If it still doesn't work, take a deeper look into the [this](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/2) issue and also refering to [this](https://github.com/home-assistant/supervised-installer/issues/304#issuecomment-1644070922) issue and open an issue in this repository.
+
