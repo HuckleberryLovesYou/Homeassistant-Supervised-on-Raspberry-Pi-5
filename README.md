@@ -190,7 +190,7 @@ apt install ./homeassistant-supervised.deb
 ```
 
 During the Installation, you get asked “Select machine type”.
-Choose the "pi5-64bit" version.
+Choose the "pi4-64bit" version. #tested by myself at 15. Jan 2024 or choose "pi5-64bit" #untested
 
 If near the end of the output you see following everything worked out fine.
 ```
