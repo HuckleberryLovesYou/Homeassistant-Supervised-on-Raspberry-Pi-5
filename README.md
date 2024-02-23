@@ -100,7 +100,7 @@ It takes about 20 seconds to start
 sh bangertech_utility_arm.sh
 ```
 
-# Now the main installation of docker-ce (community editon)
+# Now the main installation of docker-ce (community edition)
 **It might take up to a minute. Don’t cancel at any time!**
 
 ## Very Important
