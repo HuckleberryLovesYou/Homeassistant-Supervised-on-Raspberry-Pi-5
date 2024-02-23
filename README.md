@@ -46,6 +46,16 @@ What could be the problem with having a unsupported system?
 
 No support from HA-Moderators, No way of reporting bug. For a more detailed variant take a look [here](https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md)
 
+# Requirments
+- Access to the Terminal of you Raspberry Pi 5 (SSH recommended)
+- OS: Raspberry Pi OS (can be checked with `hostnamectl`)
+```
+Operating System: Debian GNU/Linux 12 (bookworm)
+          Kernel: Linux 6.1.0-rpi8-rpi-v8
+    Architecture: arm64
+```
+- Unrestriced Internet Access for your Raspberry Pi 5
+- Privileges to change to root
 
 # Setting up your kernel and security settings
 Follow the instructions given to you by the comments in each code section.
