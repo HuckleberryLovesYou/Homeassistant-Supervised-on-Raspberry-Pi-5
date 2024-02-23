@@ -46,7 +46,7 @@ What could be the problem with having a unsupported system?
 
 No support from HA-Moderators, No way of reporting bug. For a more detailed variant take a look [here](https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md)
 
-# Requirments
+# Requirements
 - Access to the Terminal of you Raspberry Pi 5 (SSH recommended)
 - OS: Raspberry Pi OS (can be checked with `hostnamectl`)
 ```
