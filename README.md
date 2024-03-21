@@ -31,22 +31,16 @@ If you decide to want add-ons you can now either decide between, giving away all
 Or click [here](https://community-assets.home-assistant.io/original/4X/c/c/e/ccef6f3b100c0ca1c135851dbdea598502440711.png) to see the overview of all installation methods
 
 ### Supported or Unsupported
-```
-Now, as we're getting closer to the installation, we need to talk about Supported or Unsupported.
-
-First of all, does Unsupported mean I can't use HA?
-
-No, it doesn't. It more or less means, that it's more likely to might experience any kind of bugs, lags or crashes. It doesn't mean you have to experience any issues! For my part, I didn't experienced any heavy bugs!
-```
 
 When am I running a unsupported System?
-
-Your running Raspberry Pi OS? -> Unsupported. Your running HA-Supervised for pi4? -> Unsupported. Your running something else except for addons with the same docker-instance -> Unsupported. And the list goes on. For the entire list take a look [here](https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md)
+For the entire list take a look [here](https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md)
 
 
 What could be the problem with having a unsupported system?
 
-No support from HA-Moderators, No way of reporting bug. For a more detailed variant take a look [here](https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md)
+- No support from HA-Mods
+- No way of reporting bugs.
+[more Info](https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md)
 
 # Requirements
 - Access to the Terminal of you Raspberry Pi 5 (SSH recommended)
