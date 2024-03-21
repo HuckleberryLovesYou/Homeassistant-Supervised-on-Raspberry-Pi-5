@@ -22,20 +22,22 @@ else:
    print("Get HA-Core")
 ```
 Or in words:
-
+```
 If you want to use add-ons then the only option is to use HA-OS or HA-Supervised.
 If you don't want add-ons and only care about integrations, then you can use HA-Core.
 If you decide to want add-ons you can now either decide between, giving away all of your possibilities and just have wasted 90 bucks on a pi 5 which isn't used more than 10% or having nearly every possible control about your system and not being restricted by your OS.
+```
 
 Or click [here](https://community-assets.home-assistant.io/original/4X/c/c/e/ccef6f3b100c0ca1c135851dbdea598502440711.png) to see the overview of all installation methods
 
 ### Supported or Unsupported
+```
 Now, as we're getting closer to the installation, we need to talk about Supported or Unsupported.
 
 First of all, does Unsupported mean I can't use HA?
 
 No, it doesn't. It more or less means, that it's more likely to might experience any kind of bugs, lags or crashes. It doesn't mean you have to experience any issues! For my part, I didn't experienced any heavy bugs!
-
+```
 
 When am I running a unsupported System?
 
