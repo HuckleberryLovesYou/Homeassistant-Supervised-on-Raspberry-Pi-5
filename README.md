@@ -264,7 +264,7 @@ That seems to be caused by systemd.resolved not being installed but try the foll
 ```
 sudo systemctl restart systemd-resolved
 ```
-If a error occured or it didn't work execute the following command to install systemd.resolved.
+If a error occured or it didn't work, execute the following command to install systemd.resolved.
 **Ensure that you know what you are doing, because it seems to be possible that a name resolution error occures.**
 ```
 sudo apt install systemd-resolved
@@ -279,7 +279,7 @@ To test your name resolution install dnsutils
 ```
 sudo apt-get install dnsutils
 ```
-Now try a foreward lookup with the following
+Now try a forward lookup with the following
 ```
 host dns.google
 ```
