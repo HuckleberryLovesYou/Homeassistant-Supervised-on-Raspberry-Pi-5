@@ -97,9 +97,9 @@ sh bangertech_utility_arm.sh
 # Now the main installation of docker-ce (community edition)
 **It might take up to a minute. Don’t cancel at any time!**
 
-## Very Important
-**By installing e.g. Portainer or other unsupported software, Homeassistant might not start or will print out an critical error. By having a critical error you won't be able to restore a Backup and add an add-on!**
-### Make sure to look into [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/main/Homeassistant%20Supervised%20not%20working%20with%20Portainer.md) to find a workaround
+
+**By installing e.g. Portainer or other unsupported software, Homeassistant might not start or will print out a critical error. By having a critical error you won't be able to restore a Backup and add an add-on!**
+### Workaround is to be found in the Troubleshooting section
 
 
 Now with that out of the way, you can navigate with the arrow keys, select or deselect with the space bar and finish by hitting enter.
