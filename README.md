@@ -56,7 +56,7 @@ Follow the instructions given to you by the comments in each code section.
 To take affect, you have to reboot the Pi after editing the file.
 ```
 # execute the following to edit the config.txt
-sudo nano /boot/firmware/config.txt
+sudo nano /boot/firmware/config.txt # might have to install nano using: sudo apt install nano
 ```
 ```
 # put the next lines **somewhere** in your **config.txt**-File
