@@ -84,10 +84,7 @@ sudo reboot
 
 
 ```
-sudo apt-get install curl 
-sudo apt-get install gnupg
-sudo apt-get install ca-certificates
-sudo apt-get install lsb-release
+sudo apt-get install curl gnupg ca-certificates lsb-release
 sudo mkdir -p /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
