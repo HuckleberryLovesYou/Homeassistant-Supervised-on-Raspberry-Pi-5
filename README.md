@@ -83,8 +83,9 @@ sudo reboot
 
 # Installation of docker and docker-compose
 
-## Variant 1: Install docker and docker-compose **quickly** (Check out variant 2 below) 
+## Variant 1: Install docker and docker-compose **quickly**
 ```
+#Paste in this script
 sudo apt-get update
 sudo apt-get install ca-certificates curl
 sudo install -m 0755 -d /etc/apt/keyrings
@@ -147,29 +148,10 @@ apt update && apt upgrade -y
 ```
 
 ## Installation of dependencies
-Now install all the required Dependencies by using the next two commands.
-You might have to restart depending on of there were a kernel update going on or not. Do, if prompted so.
-1. Command
+Now install all the required Dependencies. 
+You might have to restart depending on of there was a kernel update going on or not.
 ```
-apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote -y
-```
-
-2. Command
-```
-apt install \
-apparmor \
-cifs-utils \
-curl \
-dbus \
-jq \
-libglib2.0-bin \
-lsb-release \
-network-manager \
-nfs-common \
-systemd-journal-remote \
-systemd-resolved \
-udisks2 \
-wget -y
+apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote cifs-utils lsb-release nfs-common systemd-resolved -y
 ```
 
 # Download os-agent
