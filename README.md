@@ -80,12 +80,37 @@ apparmor=1 security=apparmor
 #reboot now to let the edits take effect
 sudo reboot
 ```
+
+
+
+```
+sudo apt-get install curl 
+sudo apt-get install gnupg
+sudo apt-get install ca-certificates
+sudo apt-get install lsb-release
+sudo mkdir -p /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+```
+
+
+
+
+
+
+
+### Add Docker and docker compose support to the Ubuntu's packages list
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-pluginsudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-pluginlinux/ubuntu   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+
+
+
 # Download and Install [The Banger Tech Utility](https://github.com/BangerTech/The-BangerTECH-Utility/tree/development) tool for easier installation of Docker-ce
 ```
 sudo wget https://raw.githubusercontent.com/BangerTech/The-BangerTECH-Utility/development/bangertech_utility_arm.sh
 ```
 
-Change the permissions of the tool
+Change the permissions
 ```
 sudo chmod +x bangertech_utility_arm.sh
 ```
@@ -96,7 +121,7 @@ It takes about 20 seconds to start
 sh bangertech_utility_arm.sh
 ```
 
-# Now the main installation of docker-ce (community edition)
+# Now the main installation of docker-ce
 **It might take up to a minute. Don’t cancel at any time!**
 
 
