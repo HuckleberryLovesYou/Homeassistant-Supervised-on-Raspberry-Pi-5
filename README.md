@@ -119,12 +119,11 @@ It takes about 20 seconds to start
 sh bangertech_utility_arm.sh
 ```
 
-# Now the main installation of docker-ce
+### Now the main installation of docker
 **It might take up to a minute. Don’t cancel at any time!**
 
 
-**By installing e.g. Portainer or other unsupported software, Homeassistant might not start or will print out a critical error. By having a critical error you won't be able to restore a Backup and add an add-on!**
-### Workaround is to be found in the Troubleshooting section
+**By installing e.g. Portainer or other unsupported software, Homeassistant might not start**
 
 
 Now with that out of the way, you can navigate with the arrow keys, select or deselect with the space bar and finish by hitting enter.
@@ -136,6 +135,9 @@ You can check if the docker-installation works by using the following command
 sudo docker run hello-world
 ```
 # Making your device ready to run Homeassistant
+
+### If you want to run Portainer as well take a look [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#use-portainer-anyway)
+
 From now on everything needs to be executed as root and does **NOT** support sudo anymore.
 So, change into root-mode:
 ```
@@ -250,4 +252,37 @@ After that you can dwonload the right version of the os-agent and reinstall it.
 ```
 dpkg -i os-agent_%Your Version Number_linux_x86_64.deb
 ```
-Now, install Homeassistant with the same command as mentioned above, because it already overwrites everthing.
+Now, install Homeassistant with the same command as mentioned above, because it already overwrites everything.
+
+
+## Use Portainer anyway
+To bypass the container-name-check you have to name the portainer-container different. 
+Remove any old Portainer images like shown below:
+```
+sudo docker rmi portainer/portainer-ce
+```
+Now pull the image again.
+```
+sudo docker pull portainer/portainer-ce:latest
+```
+Now rename the image
+```
+sudo docker tag  portainer/portainer-ce:latest iamnotportainer
+```
+Now start a docker-container
+```
+sudo docker run -d -p 9000:9000 -p 8000:8000 --name iamnotportainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data iamnotportainer
+```
+Now check if the container was named the right way
+```
+sudo docker ps -a
+```
+After that you can restart HA
+
+If you run into any problems you mighty want to try the following commands:
+```
+sudo systemctl daemon-reload
+```
+```
+sudo systemctl restart docker
+```
