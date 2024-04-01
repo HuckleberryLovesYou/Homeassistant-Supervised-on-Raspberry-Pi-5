@@ -58,7 +58,8 @@ Follow the instructions given to you by the comments in each code section.
 To take affect, you have to reboot the Pi after editing the file.
 ```
 # execute the following to edit the config.txt
-sudo nano /boot/firmware/config.txt # might have to install nano using: sudo apt install nano
+sudo apt install nano
+sudo nano /boot/firmware/config.txt
 ```
 ```
 # put the next lines **somewhere** in your **config.txt**-File
@@ -77,7 +78,7 @@ apparmor=1 security=apparmor
 # exit nano with saving
 ```
 ```
-#reboot now to let the edits take effect
+# reboot now to let the edits take effect
 sudo reboot
 ```
 
@@ -202,9 +203,9 @@ apt install ./homeassistant-supervised.deb
 ```
 
 During the Installation, you get asked “Select machine type”.
-Choose the "pi4-64bit" version. #tested by myself at January 15th 2024 or choose "pi5-64bit" #untested
+Choose the "pi4-64bit" version or use the not by me tested version "pi5-64bit".
 
-If near the end of the output you see following everything worked out fine.
+Near the end there should be this output.
 ```
 [info] Install supervisor startup scripts
 [info] Install AppArmor scripts
@@ -212,13 +213,12 @@ If near the end of the output you see following everything worked out fine.
 [info] Installing the ‘ha’ cli
 [info] Switching to cgroup v1
 [info] Within a few minutes you will be able to reach Home Assistant at:
-[info] http://<homeassistant.local>:8123 or using the IP address of your pi # remove the “>” and “<”
+[info] http://homeassistant.local:8123 or using the IP address of Raspberry Pi
 [info] machine: http://<Your Pi’s IP Address>:8123
 ```
 After setup finished without errors you can go on.
 
-Restart your entire system with the following command.
-It’s **NOT** enough to have the created docker container restarted.
+Restart your **entire** system with the following command.
 ```
 reboot
 ```
@@ -226,7 +226,7 @@ reboot
 Access your Homeassistant-WebGUI by entering the following in your browser’s address bar.
 Make sure to use **http** and **NOT** https.
 You can also use the hostname that you set, like shown in the second example.
-To find out your Pi's IP you can either look at your routers dashboard or use the following command and extract the IP.
+To find out your Pi's IP you can either look in your routers network tab or use the following command.
 ```
 hostname -I
 ```
