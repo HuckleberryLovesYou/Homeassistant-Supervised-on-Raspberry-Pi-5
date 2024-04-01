@@ -2,7 +2,7 @@
 This is a tutorial about the installation of Homeassistant Supervised on your Raspberry Pi 5 running Raspberry Pi OS 64bit.
 ### If something doesn't work, make sure to check out the Troubleshooting Section at the bottom of this Readme.
 
-## [Skip the blah](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/main/README.md#setting-up-your-kernel-and-security-settings)
+## [Skip the blah](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/main/README.md#kernel-setup)
 
 Didn't found a fix for your Prolbem? Feel free to open an issue in this repository!
 
@@ -53,9 +53,8 @@ Operating System: Debian GNU/Linux 12 (bookworm)
 - Unrestriced Internet Access for your Raspberry Pi 5
 - Privileges to change to root
 
-# Setting up your kernel and security settings
+# kernel setup
 Follow the instructions given to you by the comments in each code section.
-To take affect, you have to reboot the Pi after editing the file.
 ```
 # execute the following to edit the config.txt
 sudo apt install nano
