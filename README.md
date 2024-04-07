@@ -83,7 +83,7 @@ sudo reboot
 
 # Installation of docker and docker-compose
 
-## Variant 1: Install docker and docker-compose **quickly**
+## UNFINISHED Variant 1: Install docker and docker-compose **quickly**
 ```
 #Paste in this script
 sudo apt-get update
