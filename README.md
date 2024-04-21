@@ -83,19 +83,20 @@ sudo reboot
 
 # Installation of docker and docker-compose
 
-## UNFINISHED Variant 1: Install docker and docker-compose **quickly**
+## Variant 1: Install docker and docker-compose **quickly**
 ```
 #Paste in this script
 sudo apt-get update
-sudo apt-get install ca-certificates curl
-sudo install -m 0755 -d /etc/apt/keyrings
-sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-sudo chmod a+r /etc/apt/keyrings/docker.asc
-echo \
-  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-sudo apt-get Update && sudo apt-get
+sudo apt install curl -y
+sudo curl -fsSL https://get.docker.com -o get-docker.sh
+sudo sh get-docker.sh
+sudo rm get-docker.sh
+sudo apt install -y libffi-dev libssl-dev python3-dev python3 python3-pip
+sudo apt install docker-compose -y
+sudo systemctl enable docker
+user=$(whoami)
+sudo usermod -aG docker $user
+sudo mkdir -p $HOME/docker-compose-data
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 You can check if the docker-installation works by using the following command
