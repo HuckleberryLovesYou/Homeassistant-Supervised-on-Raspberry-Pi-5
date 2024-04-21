@@ -228,13 +228,14 @@ Access your Homeassistant-WebGUI by entering the following in your browser’s a
 Make sure to use **http** and **NOT** https.
 You can also use the hostname that you set, like shown in the second example.
 To find out your Pi's IP you can either look in your routers network tab or use the following command.
+The standard homeassistant port is **8123**.
 ```
 hostname -I
 ```
 ```
 http://<Your Pi's IP-Adress>:8213
 ```
-E.g.http://192.168.2.5:8213
+E.g.http://192.168.2.5:8123
 ```
 http://<Your Pi’s hostname>:8213
 ```
