@@ -1,4 +1,5 @@
-#!/bin/bash
+#!/bin/sh
+echo "Hello world"
 
 # Actualizar el sistema
 echo "Updating the system..."
