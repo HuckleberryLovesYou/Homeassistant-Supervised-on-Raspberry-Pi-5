@@ -233,11 +233,11 @@ The standard homeassistant port is **8123**.
 hostname -I
 ```
 ```
-http://<Your Pi's IP-Adress>:8213
+http://<Your Pi's IP-Adress>:8123
 ```
 E.g.http://192.168.2.5:8123
 ```
-http://<Your Pi’s hostname>:8213
+http://<Your Pi’s hostname>:8123
 ```
 E.g.http://raspberrypi:8123 # Standard hostname is raspberrypi
 
@@ -252,7 +252,7 @@ sudo dpkg -r os-agent
 ```
 After that you can dwonload the right version of the os-agent and reinstall it.
 ```
-dpkg -i os-agent_%Your Version Number_linux_x86_64.deb
+dpkg -i os-agent_%Your Version Number%_linux_x86_64.deb
 ```
 Now, install Homeassistant with the same command as mentioned above, because it already overwrites everything.
 
