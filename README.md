@@ -94,7 +94,7 @@ sudo rm get-docker.sh
 sudo apt install -y libffi-dev libssl-dev python3-dev python3 python3-pip
 sudo apt install docker-compose -y
 sudo systemctl enable docker
-user=$(whoami)
+$user=whoami
 sudo usermod -aG docker $user
 sudo mkdir -p $HOME/docker-compose-data
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
