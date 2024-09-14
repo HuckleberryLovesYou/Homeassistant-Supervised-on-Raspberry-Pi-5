@@ -84,7 +84,7 @@ sudo reboot
 ## Variant 2: Download and Install [The Banger Tech Utility](https://github.com/BangerTech/The-BangerTECH-Utility/tree/development) tool for **easier** installation of Docker and docker-compose
 It takes about 20 seconds to start, but it is very easy to use.
 ```
-sudo wget -q https://raw.githubusercontent.com/BangerTech/The-BangerTECH-Utility/development/bangertech_utility_arm.sh && sudo chmod +x bangertech_utility_arm.sh && sh bangertech_utility_arm.sh
+cd $HOME && sudo wget -q https://raw.githubusercontent.com/BangerTech/The-BangerTECH-Utility/development/bangertech_utility_arm.sh && sudo chmod +x bangertech_utility_arm.sh && sh bangertech_utility_arm.sh
 ```
 Now with that out of the way, you can navigate with the arrow keys, select or deselect with the space bar and finish by hitting enter.
 If getting prompted if you want to reboot, hit enter to reboot.
