@@ -63,7 +63,6 @@ sudo nano /boot/firmware/config.txt
 ```
 # put the next lines **somewhere** in your **config.txt**-File
 # Own Edits
-apparmor=1 security=apparmor
 kernel=kernel8.img
 # exit nano with saving
 ```
