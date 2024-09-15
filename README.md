@@ -250,3 +250,25 @@ sudo systemctl daemon-reload
 ```
 sudo systemctl restart docker
 ```
+## Docker Issue: cgroups: memory cgroup not supported on this system
+
+If you get the following message in your docker logs:
+
+> level=error msg="add cg to OOM monitor" error="cgroups: memory cgroup not supported on this system"
+
+ Fix it by adding "cgroup_memory=1" and "cgroup_enable=memory" in /boot/firmware/cmdline.txt:
+```
+sudo nano /boot/firmware/cmdline.txt
+
+```
+Add this to cmdline.txt:
+```
+cgroup_memory=1 cgroup_enable=memory
+```
+And now reboot your system:
+```
+sudo reboot
+```
+For further information, take a look [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/1#issuecomment-1958383687) and [here](https://github.com/moby/moby/issues/35587)
+
+Referring to issue #1 by [corgan2222](https://github.com/corgan2222)
