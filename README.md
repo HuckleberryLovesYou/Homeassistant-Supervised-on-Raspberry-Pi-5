@@ -8,6 +8,28 @@ Didn't found a fix for your Prolbem? Feel free to open an issue in this reposito
 
 Found something, which wasn't described right or bad? Feel free to open an issue in this repository!
 
+## Contents
+- [Introdution](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#introdution)
+   - [Why even HA-Supervised?](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#first-of-all---why-even-ha-supervised)
+   - [Supported or Unsupported](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#supported-or-unsupported)
+   - [Requirements](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#requirements)
+- [Installation](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#installation)
+   - [kernel setup](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#kernel-setup)
+   - [Making your system ready to run Homeassistant](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/edit/main/README.md#making-your-system-ready-to-run-homeassistant)
+      - [Installation of docker and docker-compose](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#installation-of-docker-and-docker-compose)
+      - [Installation of Homeassistant dependencies](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/edit/main/README.md#installation-of-homeassistant-dependencies)
+      - [Download os-agent](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/edit/main/README.md#download-os-agent)
+      - [Install os-agent](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/edit/main/README.md#install-os-agent)
+   - [Install Homeassistant](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/edit/main/README.md#install-homeassistant)
+      - [Download homeassistant-supervised](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/edit/main/README.md#download-homeassistant-supervised)
+      - [Installation of Homeassistant-supervised](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/edit/main/README.md#installation-of-homeassistant-supervised)
+- [Accessing your Homeassistant Website](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/edit/main/README.md#accessing-your-homeassistant-website)
+- [Troubleshooting](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/edit/main/README.md#troubleshooting)
+   - [Error while installing Homeassistant-Supervised.deb caused by wrong os-agent](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/edit/main/README.md#error-while-installing-homeassistant-superviseddeb-caused-by-wrong-os-agent)
+   - [Use Portainer anyway](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/edit/main/README.md#use-portainer-anyway)
+   - [Docker Issue: cgroups: memory cgroup not supported on this system](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/edit/main/README.md#docker-issue-cgroups-memory-cgroup-not-supported-on-this-system)
+
+# Introdution
 ## First of all - Why even HA-Supervised? 
 It's pretty simple:
 
@@ -42,7 +64,7 @@ What could be the problem with having a unsupported system?
 - No way of reporting bugs.
 [more Info](https://github.com/home-assistant/architecture/blob/master/adr/0014-home-assistant-supervised.md)
 
-# Requirements
+## Requirements
 - Access to the Terminal of you Raspberry Pi 5 (SSH recommended)
 - OS: Raspberry Pi OS (can be checked with `hostnamectl`)
 ```
@@ -52,8 +74,8 @@ Operating System: Debian GNU/Linux 12 (bookworm)
 ```
 - Unrestriced Internet Access for your Raspberry Pi 5
 - Privileges to change to root
-
-# kernel setup
+# Installation
+## kernel setup
 Follow the instructions given to you by the comments in each code section.
 ```
 # execute the following to edit the config.txt
@@ -79,9 +101,9 @@ apparmor=1 security=apparmor
 # reboot now to let the edits take effect
 sudo reboot
 ```
-
-# Installation of docker and docker-compose
-## Variant 2: Download and Install [The Banger Tech Utility](https://github.com/BangerTech/The-BangerTECH-Utility/tree/development) tool for **easier** installation of Docker and docker-compose
+# Making your system ready to run Homeassistant
+## Installation of docker and docker-compose
+Download and Install [The Banger Tech Utility](https://github.com/BangerTech/The-BangerTECH-Utility/tree/development) tool for **easier** installation of Docker and docker-compose
 It takes about 20 seconds to start, but it is very easy to use.
 ```
 cd $HOME && sudo wget -q https://raw.githubusercontent.com/BangerTech/The-BangerTECH-Utility/development/bangertech_utility_arm.sh && sudo chmod +x bangertech_utility_arm.sh && sh bangertech_utility_arm.sh
@@ -97,10 +119,8 @@ You can check if the docker-installation works by using the following command
 ```
 sudo docker run hello-world
 ```
-# Making your device ready to run Homeassistant
-
-### If you want to run Portainer as well take a look [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#use-portainer-anyway)
-
+**If you want to run Portainer as well take a look [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#use-portainer-anyway)**
+## Installation of Homeassistant dependencies
 From now on everything needs to be executed as root and does **NOT** support sudo anymore.
 So, change into root-mode:
 ```
@@ -112,14 +132,13 @@ Update every Package on your Device.
 apt update && apt upgrade -y
 ```
 
-## Installation of dependencies
 Now install all the required Dependencies. 
 You might have to restart depending on of there was a kernel update going on or not.
 ```
 apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote cifs-utils lsb-release nfs-common systemd-resolved -y
 ```
 
-# Download os-agent
+## Download os-agent
 Today, the newest verison is 1.6.0
 If you do that in the future, you may want to check for a newer version.
 To do that, go to this [GitHub page](https://github.com/home-assistant/os-agent/releases) 
@@ -134,7 +153,7 @@ wget https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent
 # You can type "ls" to ensure the download was succesful
 ```
 
-# Install os-agent
+## Install os-agent
 To do that, we use dpkg.
 Using Tab, the filename completes itself after a few characters.
 ```
@@ -147,8 +166,8 @@ gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
 This should **NOT** return an error.
 You might need to install libglib2.0-bin to get the gdbus command.
 If you get an object introspection with interface etc. OS Agent is working as expected.
-
-# Download homeassistant-supervised
+# Install Homeassistant
+## Download Homeassistant-supervised
 Today, the newest version is 1.6.0.
 By using the following command you automatically download the latest version of Homeassistant.
 If you still want to check, you can do this on this [Github page](https://github.com/home-assistant/supervised-installer/releases/)
@@ -158,7 +177,7 @@ wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervise
 # The -O  is there to overwrite exiting files if there are, which makes troubleshooting easier, by having no need to uninstall it after an error.
 ```
 
-# Install Homeassistant
+## Installation of Homeassistant-supervised
 To install execute the following command.
 ```
 apt install ./homeassistant-supervised.deb
@@ -185,7 +204,7 @@ Restart your **entire** system with the following command.
 reboot
 ```
 If you get the error "Depends: docker-ce but it is not installable" take a look at [here #5](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/5)
-# Accessing your Homeassistant WebGUI
+# Accessing your Homeassistant Website
 Access your Homeassistant-WebGUI by entering the following in your browser’s address bar.
 Make sure to use **http** and **NOT** https.
 You can also use the hostname that you set, like shown in the second example.
