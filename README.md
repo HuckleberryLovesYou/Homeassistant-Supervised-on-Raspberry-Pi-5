@@ -184,6 +184,7 @@ Restart your **entire** system with the following command.
 ```
 reboot
 ```
+If you get the error "Depends: docker-ce but it is not installable" take a look at [here #5](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/5)
 # Accessing your Homeassistant WebGUI
 Access your Homeassistant-WebGUI by entering the following in your browser’s address bar.
 Make sure to use **http** and **NOT** https.
