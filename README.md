@@ -137,6 +137,10 @@ You might have to restart depending if of there was a kernel update going on or 
 ```
 apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote cifs-utils lsb-release nfs-common systemd-resolved -y
 ```
+After that use the following command if name resolution stopped working.
+```
+systemctl restart systemd-resolved.service
+```
 
 ## Download os-agent
 Today, the newest verison is 1.6.0
@@ -157,7 +161,7 @@ wget https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent
 To do that, we use dpkg.
 Using Tab, the filename completes itself after a few characters.
 ```
-dpkg -i os-agent_%Your Version Number_linux_x86_64.deb
+dpkg -i os-agent_%Your Version Number%_linux_x86_64.deb
 ```
 You can test if the installation was successful by running:
 ```
@@ -180,11 +184,11 @@ wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervise
 ## Installation of Homeassistant-supervised
 To install execute the following command.
 ```
-apt install ./homeassistant-supervised.deb
+apt install ./homeassistant-supervised.deb -y
 ```
 
 During the Installation, you get asked “Select machine type”.
-Choose the "pi4-64bit" version or use the **not by me tested version** "pi5-64bit".
+Choose the "pi5-64bit" version.
 
 Near the end there should be this output.
 ```
