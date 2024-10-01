@@ -135,22 +135,11 @@ apt update && apt upgrade -y
 Now install all the required Dependencies. 
 You might have to restart depending if of there was a kernel update going on or not.
 ```
-apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote cifs-utils lsb-release nfs-common systemd-resolved -y
-```
-After that use the following command if name resolution stopped working.
-```
-systemctl restart systemd-resolved.service
+apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote cifs-utils lsb-release nfs-common systemd-resolved -y && systemctl restart systemd-resolved.service
 ```
 
 ## Download os-agent
-Today, the newest verison is 1.6.0
-If you do that in the future, you may want to check for a newer version.
-To do that, go to this [GitHub page](https://github.com/home-assistant/os-agent/releases) 
-Scroll to the newest assets and right-click on the asset called os-agent_%Newest Version%_linux_**aarch64.deb**
-Hit right click while hovering the file. Then click on **copy link address** and put it in the command below.
-```
-wget %Your above copied link%
-```
+Today, the newest verison is 1.6.0. If you do that in the future, you may want to check for a newer version. To do that, go to this [GitHub page](https://github.com/home-assistant/os-agent/releases), scroll to the newest release and right-click on the asset called os-agent_%Newest Version%linuxaarch64.deb Hit right click while hovering the file. Then click on copy link address and put it in the command below.
 It should then look like the following example except for the version-number.
 ```
 wget https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_aarch64.deb
@@ -161,14 +150,13 @@ wget https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent
 To do that, we use dpkg.
 Using Tab, the filename completes itself after a few characters.
 ```
-dpkg -i os-agent_%Your Version Number%_linux_x86_64.deb
+dpkg -i os-agent_%Your above downloaded Version%_linux_aarch64.deb
 ```
 You can test if the installation was successful by running:
 ```
-gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
+sudo apt install libglib2.0-bin && gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
 ```
 This should **NOT** return an error.
-You might need to install libglib2.0-bin to get the gdbus command.
 If you get an object introspection with interface etc. OS Agent is working as expected.
 # Install Homeassistant
 ## Download Homeassistant-supervised
