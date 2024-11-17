@@ -82,17 +82,10 @@ sudo apt install nano && sudo bash -c 'echo "kernel=kernel8.img" | cat - /boot/f
 ````
 # Making your system ready to run Homeassistant
 ## Installation of docker and docker-compose
-Download and Install [The Banger Tech Utility](https://github.com/BangerTech/The-BangerTECH-Utility/tree/development) tool for **easier** installation of Docker and docker-compose
-It takes about 20 seconds to start, but it is very easy to use.
+Download and Install [Docker-ce](https://github.com/docker-archive/docker-ce/) and [Docker compose](https://github.com/docker/compose).
 ```
-cd $HOME && sudo wget -q https://raw.githubusercontent.com/BangerTech/The-BangerTECH-Utility/development/bangertech_utility_arm.sh && sudo chmod +x bangertech_utility_arm.sh && sh bangertech_utility_arm.sh
+sudo apt install curl -y && sudo curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && sudo rm get-docker.sh && sudo apt install -y libffi-dev libssl-dev python3-dev python3 python3-pip && sudo apt install docker-compose -y && sudo systemctl enable docker && user=$(whoami) && sudo usermod -aG docker $user && sudo mkdir -p $HOME/docker-data
 ```
-Now ,with that out of the way, you can navigate with the arrow keys, select or deselect with the space bar and finish by hitting enter.
-If you are prompted if you want to reboot, hit enter to reboot.
-In the following fields, you should only pick “Docker+Docker-Compose” and then follow the Steps presented by the Tool.
-**By installing e.g. Portainer or other unsupported software, Homeassistant might not start**
-
-**It might take up to a minute. Don’t cancel at any time!**
 
 You can check if the docker-installation works by using the following command
 ```
@@ -118,11 +111,11 @@ wget -O os-agent_linux_aarch64.deb $(curl -s https://api.github.com/repos/home-a
 ```
 
 ## Install os-agent
-To do that, we use dpkg.
-Using Tab, the filename completes itself after a few characters.
+To install os-agnet, we use dpkg with the install parameter
 ```
 dpkg -i os-agent_linux_aarch64.deb
 ```
+
 You can test if the installation was successful by running:
 ```
 sudo apt install -y libglib2.0-bin && gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
