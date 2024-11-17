@@ -1,0 +1,5 @@
+#
+# This is how the config.txt file should look like after the edits took effect. (Things may vary)
+#
+
+console=serial0,115200 console=tty1 root=PARTUUID=d559aac4-02 rootfstype=ext4 fsck.repair=yes rootwait quiet splash plymouth.ignore-serial-consoles cfg80211.ieee80211_regdom=DE systemd.unified_cgroup_hierarchy=false apparmor=1 security=apparmor
