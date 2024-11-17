@@ -101,20 +101,14 @@ sudo docker run hello-world
 **If you want to run Portainer as well, take a look [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#use-portainer-anyway)**
 ## Installation of Homeassistant dependencies
 From now on, everything needs to be executed as root and does **NOT** support sudo anymore.
-So, change into root-mode:
+So, change to root:
 ```
 sudo su -
 ```
 
-Update every Package on your Device.
+Update every Package on your Device and install all the required Dependencies. 
 ```
-apt update && apt upgrade -y
-```
-
-Now install all the required Dependencies. 
-You might have to restart.
-```
-apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote cifs-utils lsb-release nfs-common systemd-resolved -y && systemctl restart systemd-resolved.service
+apt update && apt upgrade -y && apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote cifs-utils lsb-release nfs-common systemd-resolved -y && systemctl restart systemd-resolved.service
 ```
 
 ## Download os-agent
