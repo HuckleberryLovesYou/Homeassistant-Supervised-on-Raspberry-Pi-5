@@ -34,11 +34,11 @@ Found something, that wasn't described good or wrong? Feel free to open an issue
 It's pretty simple:
 
 ```python
-want_addons = %true/false%
-want_control_over_system = %true/false%
+want_addons = True or False
+want_control_over_system = True or False
 
-if want_addons == true:
-   if want_control_over_system == true:
+if want_addons:
+   if want_control_over_system:
       print("Get HA-Supervised")
    else:
      print("Get HA-OS") 
@@ -66,7 +66,7 @@ What could be the problem with having an unsupported system?
 
 ## Requirements
 - Access to the Terminal of your Raspberry Pi 5 (SSH recommended)
-- OS: Raspberry Pi OS (can be checked with `hostnamectl`)
+- OS: Raspberry Pi OS (based on Debian Bookworm) (can be checked with `hostnamectl`)
 ```
 Operating System: Debian GNU/Linux 12 (bookworm)
           Kernel: Linux 6.1.0-rpi8-rpi-v8
@@ -76,31 +76,10 @@ Operating System: Debian GNU/Linux 12 (bookworm)
 - Privileges to change to root
 # Installation
 ## kernel setup
-Follow the instructions given to you by the comments in each code section.
+Add the configurations to the config.txt and cmdline.txt files by using this command.
 ```
-# execute the following to edit the config.txt
-sudo apt install nano
-sudo nano /boot/firmware/config.txt
-```
-```
-# put the next lines **somewhere** in your **config.txt**-File
-# Own Edits
-kernel=kernel8.img
-# exit nano with saving
-```
-```
-# execute the following to edit the cmdline.txt
-sudo nano /boot/firmware/cmdline.txt
-```
-```
-# Append the following to the **end** of the line in the **cmdline.txt**-File
-apparmor=1 security=apparmor
-# exit nano with saving
-```
-```
-# reboot now to let the edits take effect
-sudo reboot
-```
+sudo apt install -y nano && sudo sh -c 'echo "kernel=kernel8.img" >> /boot/firmware/config.txt' && sudo sh -c 'echo "apparmor=1 security=apparmor" >> /boot/firmware/cmdline.txt' && sudo reboot
+````
 # Making your system ready to run Homeassistant
 ## Installation of docker and docker-compose
 Download and Install [The Banger Tech Utility](https://github.com/BangerTech/The-BangerTECH-Utility/tree/development) tool for **easier** installation of Docker and docker-compose
@@ -133,28 +112,26 @@ apt update && apt upgrade -y
 ```
 
 Now install all the required Dependencies. 
-You might have to restart depending if of there was a kernel update going on or not.
+You might have to restart.
 ```
 apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote cifs-utils lsb-release nfs-common systemd-resolved -y && systemctl restart systemd-resolved.service
 ```
 
 ## Download os-agent
-Today, the newest verison is 1.6.0. If you do that in the future, you may want to check for a newer version. To do that, go to this [GitHub page](https://github.com/home-assistant/os-agent/releases), scroll to the newest release and right-click on the asset called os-agent_%Newest Version%linuxaarch64.deb Hit right click while hovering the file. Then click on copy link address and put it in the command below.
-It should then look like the following example except for the version-number.
+Now, we'll download the latest version of OS-Agent, required by Homeassistant, automatically from [here](https://github.com/home-assistant/os-agent/releases) by using the following command.
 ```
-wget https://github.com/home-assistant/os-agent/releases/download/1.6.0/os-agent_1.6.0_linux_aarch64.deb
-# You can type "ls" to ensure the download was succesful
+wget -O os-agent_linux_aarch64.deb $(curl -s https://api.github.com/repos/home-assistant/os-agent/releases/latest | grep "browser_download_url.*linux_aarch64.deb" | cut -d '"' -f 4)
 ```
 
 ## Install os-agent
 To do that, we use dpkg.
 Using Tab, the filename completes itself after a few characters.
 ```
-dpkg -i os-agent_%Your above downloaded Version%_linux_aarch64.deb
+dpkg -i os-agent_linux_aarch64.deb
 ```
 You can test if the installation was successful by running:
 ```
-sudo apt install libglib2.0-bin && gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
+sudo apt install -y libglib2.0-bin && gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
 ```
 This should **NOT** return an error.
 If you get an object introspection with interface etc. OS Agent is working as expected.
@@ -166,7 +143,6 @@ If you still want to check, you can do this on this [Github page](https://github
 ```
 wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
 # You can type "ls" to ensure the download was succesful
-# The -O  is there to overwrite exiting files if there are, which makes troubleshooting easier, by having no need to uninstall it after an error.
 ```
 
 ## Installation of Homeassistant-supervised
@@ -196,7 +172,7 @@ Restart your **entire** system with the following command.
 reboot
 ```
 If you get the error "Depends: docker-ce but it is not installable" take a look at [here #5](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/5)
-# Accessing your Homeassistant Website
+# Accessing your Homeassistant Web page
 Access your Homeassistant-GUI by entering the following in your browser’s address bar.
 Make sure to use **http** and **NOT** https.
 You can also use the hostname that you set, like shown in the second example.
