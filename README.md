@@ -147,7 +147,7 @@ apt install ./homeassistant-supervised.deb -y
 ```
 
 During the Installation, you get asked “Select machine type”.
-Choose the "pi5-64bit" version.
+Choose the "pi5-64bit" version like shown [here](https://www.uugear.com/wordpress/wp-content/uploads/2024/04/HAS_model.jpg)
 
 Near the end there should be this output.
 ```
@@ -179,11 +179,11 @@ hostname -I
 ```
 http://<Your Pi's IP-Adress>:8123
 ```
-E.g.http://192.168.2.5:8123
+E.g. http://192.168.2.5:8123
 ```
 http://<Your Pi’s hostname>:8123
 ```
-E.g.http://raspberrypi:8123 # Standard hostname is raspberrypi
+E.g. http://raspberrypi:8123 (Standard hostname is 'raspberrypi')
 
 
 
