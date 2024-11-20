@@ -81,7 +81,7 @@ It is also possible to install Homeassistant Supervised by using my [script](htt
 It might not work for everyone on every device. If the script worked for you or it didn't work for you, please open a issue [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues) and let me know.
 To download and run the script, execute the following:
 ```
-wget https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/main/installHomeassistant.sh && sudo sh ./installHomeassistant.sh
+sudo wget https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/raw/main/installHomeassistant.sh -O installHomeassistant.sh && sudo chmod +x installHomeassistant.sh && sudo sh ./installHomeassistant.sh
 ```
 ## kernel setup
 Add the configurations to the config.txt and cmdline.txt files by using this command.
