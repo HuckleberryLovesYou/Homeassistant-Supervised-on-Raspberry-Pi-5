@@ -76,9 +76,11 @@ Operating System: Debian GNU/Linux 12 (bookworm)
 - Unrestricted Internet Access for your Raspberry Pi 5
 - Privileges to change to root
 # Installation
-## Automatic Installation (Advanced users only)
-It is also possible to install Homeassistant Supervised by using my [script](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/development/installHomeassistant.sh).
+## Automatic Installation (Advanced users **only**)
+**UNTESTED**
+It is also possible to install Homeassistant Supervised by using my [script](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/development/installHomeassistant.sh). This script is untested. 
 It might not work for everyone on every device. If the script worked for you or it didn't work for you, please open a issue [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues) and let me know.
+**NOTE:** As far as I know, the script onyl with if executed as a user (but not root), which has sudo privileges.
 To download and run the script, execute the following:
 ```
 sudo wget https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/raw/main/installHomeassistant.sh -O installHomeassistant.sh && sudo chmod +x installHomeassistant.sh && sudo sh ./installHomeassistant.sh
