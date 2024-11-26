@@ -84,7 +84,7 @@ case $STEP in
 			sed -i '1s/^/kernel=kernel8.img\n/' /boot/firmware/config.txt # adds string at the top of the file
 		fi
 		if ! grep -q "apparmor=1 security=apparmor" /boot/firmware/cmdline.txt; then
-			sed -z '$ s/\n$//' /boot/firmware/cmdline.txt > /tmp/cmdline.txt && mv /tmp/cmdline.txt /boot/firmware/cmdline.txt && printf " apparmor=1 security=apparmor" >> /boot/firmware/cmdline.txtt
+			sed -z '$ s/\n$//' /boot/firmware/cmdline.txt > /tmp/cmdline.txt && mv /tmp/cmdline.txt /boot/firmware/cmdline.txt && printf " apparmor=1 security=apparmor" >> /boot/firmware/cmdline.txt
 		fi
 		
 		echo "I: A reboot is now required."
