@@ -77,10 +77,9 @@ Operating System: Debian GNU/Linux 12 (bookworm)
 - Privileges to change to root
 # Installation
 ## Automatic Installation (Advanced users **only**)
-**UNTESTED**
 
-It is also possible to install Homeassistant Supervised by using my [script](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/development/installHomeassistant.sh). This script is untested. 
-It might not work for everyone on every device. If the script worked for you or it didn't work for you, please open a issue [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues) and let me know.
+It is also possible to install Homeassistant Supervised by using my [script](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/development/installHomeassistant.sh).
+It might not work for everyone on every device. If the script worked for you on a different OS aswell or if it didn't work for you, please open a  [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues). 
 
 **NOTE:** As far as I know, the script only works if executed as a user (but not root), which has sudo privileges.
 To download and run the script, execute the following:
