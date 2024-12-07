@@ -46,11 +46,12 @@ if want_addons:
 else:
    print("Get HA-Core")
 ```
-Or in words:
-If you want to use add-ons, then the only option is to use HA-OS or HA-Supervised.
-If you don't want add-ons and only care about integrations, then you can use HA-Core.
-If you decide to want add-ons, you can now either decide between giving away all of your opportunities and just having wasted 90 bucks on a Pi 5, which isn't used more than 10%, or having nearly every possible control over your system and not being restricted by your OS.
 
+Or in words:
+To use add-ons, you must opt for either Home Assistant OS (HA-OS) or Home Assistant Supervised (HA-Supervised).
+Either limiting your system's potential and underutilizing your Raspberry Pi 5 (likely using less than 10% of its capabilities), or retaining control over your system without being constrained by the operating system.
+
+If you do not require add-ons and only prioritize integrations, Home Assistant Core (HA-Core) is a suitable choice.
 Or click [here](https://community-assets.home-assistant.io/original/4X/c/c/e/ccef6f3b100c0ca1c135851dbdea598502440711.png) to see an overview of all installation methods
 
 ### Supported or Unsupported
