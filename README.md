@@ -87,9 +87,9 @@ To download and run the script, execute the following:
 sudo wget https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/raw/main/installHomeassistant.sh -O installHomeassistant.sh && sudo chmod +x installHomeassistant.sh && sudo sh ./installHomeassistant.sh
 ```
 ## kernel setup
-Add the configurations to the config.txt and cmdline.txt files by using this command.
+Add the configurations to the config.txt and cmdline.txt files and reboot by using this command.
 ```
-sudo apt install nano && sudo bash -c 'echo "kernel=kernel8.img" | cat - /boot/firmware/config.txt > temp && mv temp /boot/firmware/config.txt' && sudo nano /boot/firmware/cmdline.txt && echo "apparmor=1 security=apparmor" | sudo tee -a /boot/firmware/cmdline.txt && sudo reboot
+sudo bash -c 'grep -q "kernel=kernel8.img" /boot/firmware/config.txt || sed -i "1s/^/kernel=kernel8.img\n/" /boot/firmware/config.txt; grep -q "apparmor=1 security=apparmor" /boot/firmware/cmdline.txt || (sed -z "$ s/\n$//" /boot/firmware/cmdline.txt > /tmp/cmdline.txt && mv /tmp/cmdline.txt /boot/firmware/cmdline.txt && printf " apparmor=1 security=apparmor" >> /boot/firmware/cmdline.txt)' && sudo reboot
 ````
 # Making your system ready to run Homeassistant
 ## Installation of docker and docker-compose
