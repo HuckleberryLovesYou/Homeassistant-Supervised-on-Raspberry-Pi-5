@@ -80,7 +80,7 @@ Operating System: Debian GNU/Linux 12 (bookworm)
 ## Automatic Installation (Advanced users **only**)
 
 It is also possible to install Homeassistant Supervised by using my [script](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/development/installHomeassistant.sh).
-It might not work for everyone on every device. If the script worked for you on a different OS aswell or if it didn't work for you, please open a  [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues). 
+It might not work for everyone on every device. If the script worked for you on a different OS aswell or if it didn't work for you, please open a [issue](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues).
 
 **NOTE:** As far as I know, the script only works if executed as a user (but not root), which has sudo privileges.
 To download and run the script, execute the following:
@@ -141,7 +141,6 @@ Today, the newest version is 1.6.0.
 You can also check for the lastest version [here](https://github.com/home-assistant/supervised-installer/releases/)
 ```
 wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
-# You can type "ls" to ensure the download was succesful
 ```
 
 ## Installation of Homeassistant-supervised
