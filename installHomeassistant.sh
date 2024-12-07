@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# By default, skip checks is set to false. If you want to skip the OS and Architecture checks, remove the '#' on the line below.
+# SKIP_CHECKS=true  # Uncomment this line to skip OS and Architecture checks
+
 set -e
 
 FLAG_FILE="/tmp/installHomeassistant_incomplete.flag"
@@ -69,14 +72,34 @@ case $STEP in
 		echo "I: Step 0: Making kernel configuration changes..."
         # Step 0
 		
-		# Check OS compatibility
-		os_info=$(hostnamectl status | grep "Operating System:" | cut -d: -f2 | xargs)
-		if [ "$os_info" != "Debian GNU/Linux 12 (bookworm)" ]; then
-			echo "E: OS does not match. Exiting."
-			exit 1
+		# If SKIP_CHECKS is true, skip the checks
+		if [ "$SKIP_CHECKS" != "true" ]; then
+		    # Check OS compatibility
+		    os_info=$(hostnamectl status | grep "Operating System:" | cut -d: -f2 | xargs)
+		    if [ "$os_info" != "Debian GNU/Linux 12 (bookworm)" ]; then
+		        echo "E: OS does not match an OS where the script was tested on. Exiting."
+		        echo "I: If you still want to try the automatic installation (which will likely work), edit the script to ignore these checks."
+		        echo "I: To do this, enter an editor and uncomment the following line at the top of the script: 'SKIP_CHECKS=true'"
+		        echo "I: If your untested OS works, please open an issue at https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues for this OS to be added."
+		        exit 1
+		    fi
+		    echo "I: OS used is supported"
+		    
+		    # Check Architecture
+		    if [ "$(uname -m)" != "aarch64" ]; then
+		        echo "E: Architecture is not 64-bit. Exiting."
+		        echo "I: If you still want to try the automatic installation, edit the script to ignore these checks."
+		        echo "I: To do this, enter an editor and uncomment the following line at the top of the script: 'SKIP_CHECKS=true'"
+		        echo "I: If your untested architecture works, please open an issue at https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues for this architecture to be added."
+		        exit 1
+		    fi
+		    echo "I: Architecture used is supported"
+		else
+		    echo "I: The OS and Architecture checks were skipped because SKIP_CHECKS=true was set."
 		fi
-		echo "I: OS used is supported"
+		
 		echo "I: Home Assistant Supervised will now be installed:"
+
 		
 		# Kernel config
 		echo "I: Adding kernel configurations..."
