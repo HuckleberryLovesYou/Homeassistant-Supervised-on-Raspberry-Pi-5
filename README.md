@@ -23,8 +23,8 @@ Found something, that wasn't described good or wrong? Feel free to open an issue
       - [Install os-agent](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#install-os-agent)
    - [Install Homeassistant](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#install-homeassistant)
       - [Download homeassistant-supervised](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#download-homeassistant-supervised)
-      - [Installation of Homeassistant-supervised](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#installation-of-homeassistant-supervised)
-- [Accessing your Homeassistant Website](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#accessing-your-homeassistant-website)
+      - [Installation of Homeassistant-supervised]([https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#installation-of-homeassistant-supervised)
+- [Accessing your Homeassistant Website](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#accessing-your-homeassistant-web-page)
 - [Troubleshooting](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#troubleshooting)
    - [Error while installing Homeassistant-Supervised.deb caused by wrong os-agent](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#error-while-installing-homeassistant-superviseddeb-caused-by-wrong-os-agent)
    - [Use Portainer anyway](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#use-portainer-anyway)
@@ -174,19 +174,16 @@ If you get the error "Depends: docker-ce but it is not installable" take a look 
 Access your Homeassistant-GUI by entering the following in your browser’s address bar.
 Make sure to use **http** and **NOT** https.
 You can also use the hostname that you set, like shown in the second example.
-To find out your Pi's IP you can either look in your router's network tab or use the following command.
+To find out your Pi's IP you can use the following command.
 The standard homeassistant port is **8123**.
 ```
-hostname -I
+echo "http://$(hostname -I | cut -d ' ' -f 1):8123"
 ```
+E.g.: http://192.168.2.5:8123
 ```
-http://<Your Pi's IP-Adress>:8123
+echo "http://$(hostname):8123"
 ```
-E.g. http://192.168.2.5:8123
-```
-http://<Your Pi’s hostname>:8123
-```
-E.g. http://raspberrypi:8123 (Standard hostname is 'raspberrypi')
+E.g.: http://raspberrypi:8123
 
 
 
@@ -197,7 +194,7 @@ If something goes wrong with the Installation of Homeassistant Installer, you ca
 ```
 sudo dpkg -r os-agent
 ```
-After that you can dwonload the right version of the os-agent and reinstall it.
+After that you can download the right version of the os-agent and reinstall it.
 ```
 dpkg -i os-agent_%Your Version Number%_linux_x86_64.deb
 ```
