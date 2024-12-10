@@ -34,3 +34,4 @@ My configuration.yaml file:
 My Homeassistant Core log file:
 My Homeassistant Supervisor log file:
 My Homeassistant Host log file:
+If you used the installer script, please provide the log from /tmp/installHomeassistantSupervised.log:
