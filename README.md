@@ -86,7 +86,7 @@ It might not work for everyone on every device. If the script worked for you on 
 **NOTE:** As far as I know, the script only works if executed as a user (but not root), which has sudo privileges.
 To download and run the script, execute the following:
 ```
-sudo wget https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/raw/main/installHomeassistant.sh -O installHomeassistant.sh && sudo chmod +x installHomeassistant.sh && sudo sh ./installHomeassistant.sh >> /tmp/installHomeassistantSupervised.log 2>&1
+sudo wget https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/raw/main/installHomeassistant.sh -O installHomeassistant.sh && sudo chmod +x installHomeassistant.sh && sudo sh ./installHomeassistant.sh
 ```
 ## kernel setup
 Add the configurations to the config.txt and cmdline.txt files and reboot by using this command.
