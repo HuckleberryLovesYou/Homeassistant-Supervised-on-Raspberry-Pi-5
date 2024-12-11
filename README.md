@@ -236,7 +236,7 @@ sudo systemctl restart docker
 
 ## No Audio on Host after Homeassisant Supervised Installation
 
-This section is reffering to issue #21. For further information check out the issue.
+This section is reffering to [#21](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/21). For further information check out the issue.
 This problem might also cause no YouTube playback.
 To fix this problem follow these steps:
 1. Go to `Settings > Add-ons > ADD-ON Store`
