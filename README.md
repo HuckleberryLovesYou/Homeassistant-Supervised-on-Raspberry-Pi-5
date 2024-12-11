@@ -269,4 +269,4 @@ sudo reboot
 ```
 For further information, take a look [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/1#issuecomment-1958383687) and [here](https://github.com/moby/moby/issues/35587)
 
-Referring to issue #1 by [corgan2222](https://github.com/corgan2222)
+Referring to issue [#9](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/9)
