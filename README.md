@@ -28,6 +28,7 @@ Found something, that wasn't described good or wrong? Feel free to open an issue
 - [Troubleshooting](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#troubleshooting)
    - [Error while installing Homeassistant-Supervised.deb caused by wrong os-agent](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#error-while-installing-homeassistant-superviseddeb-caused-by-wrong-os-agent)
    - [Use Portainer anyway](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#use-portainer-anyway)
+   - [Audio not working on Host](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/edit/21-rpi5-no-audio-after-kernel-setup-command/README.md#no-audio-on-host-after-homeassisant-supervised-installation)
    - [Docker Issue: cgroups: memory cgroup not supported on this system](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#docker-issue-cgroups-memory-cgroup-not-supported-on-this-system)
 
 # Introduction
@@ -232,6 +233,21 @@ sudo systemctl daemon-reload
 ```
 sudo systemctl restart docker
 ```
+
+## No Audio on Host after Homeassisant Supervised Installation
+
+This section is reffering to issue #21. For further information check out the issue.
+This problem might also cause no YouTube playback.
+To fix this problem follow these steps:
+1. Go to `Settings > Add-ons > ADD-ON Store`
+2. Add the the Repository 'https://github.com/OPHoperHPO/hassio-addons' to Homeassistant like the following:
+![Click on three dots in upper right corner; Click on Repositories; Paste in the Repository link in; Click on Add; Click on Close](pictures/add-repository.png)
+3. Add the Add-on like shown in the following:
+![Click on three dots in upper right corner; Click on 'Update addon list'; Search for 'pulseaudio_fix in the search bar'; Click on the Add-on named 'Alsa & PulseAudio Fix' (not dev version); Click on Install](pictures/add-addon-to-ha.png)
+'Update add-on list' may take a few minutes or some retires
+4. Click on 'Install' to install the add-on
+5. Take a look in the logs of the add-on and search for the following line to ensure the fix worked: `[ALSA&PULSEAUDIO FIX][INFO] Module module-suspend-on-idle loaded successfully!`
+
 ## Docker Issue: cgroups: memory cgroup not supported on this system
 
 If you get the following message in your docker logs:
