@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# By default, skip checks is set to false. If you want to skip the OS and Architecture checks, remove the '#' on the line below.
-# SKIP_CHECKS=true  # Uncomment this line to skip OS and Architecture checks
+# By default, skip checks is set to 0. If you want to skip the OS and Architecture checks, set variable below to 1
+SKIP_CHECKS=0  # Set variable to 1 to skip
 
 set -e
 
-FLAG_FILE="/tmp/installHomeassistant_incomplete.flag"
-CONFIG_PROGRESS="/tmp/installHomeassistant_progress"
+FLAG_FILE="/var/tmp/installHomeassistant_incomplete.flag"
+CONFIG_PROGRESS="/var/tmp/installHomeassistant_progress"
 SCRIPT_PATH="$(realpath "$0")"
+BASHRC_FILE="$HOME/.bashrc"
 
 # prompt user function
 prompt_user() {
@@ -19,12 +20,6 @@ prompt_user() {
         exit 0
     fi
 }
-
-# Checks if root executed the script
-if [[ $EUID -eq 0 ]]; then
-    echo "Please run this script as a user with sudo. Aborting."
-    exit 1
-fi
 
 # Check if the script is incomplete
 if [[ -f "$FLAG_FILE" ]]; then
@@ -48,21 +43,21 @@ case $STEP in
 		echo "Do you want to continue (y/n)"
 		read -r continue
 		if [[ $continue != "y" ]]; then
-			echo "Aborting the script. Re-running the script may break the system. Follow manual steps instead."
+			echo "Aborting the script. Re-running the script should be safe."
 			rm -f "$FLAG_FILE" "$CONFIG_PROGRESS"
 			exit 0
 		fi
 
-		BASHRC_FILE="$HOME/.bashrc"
 
-		# Add content to .bashrc
+		# Add resume logic to .bashrc
 		if ! grep -Fxq "if [[ -f $FLAG_FILE ]]; then" "$BASHRC_FILE"; then
-			# Append the lines to the .bashrc file
-			echo -e "\n# Run script after reboot if it's incomplete" >> "$BASHRC_FILE"
+			# Appends the following lines to the .bashrc file
+			printf "\n# Run script after reboot if it's incomplete\n" >> "$BASHRC_FILE"
 			echo "if [[ -f $FLAG_FILE ]]; then" >> "$BASHRC_FILE"
 			echo "    $SCRIPT_PATH" >> "$BASHRC_FILE"
 			echo "fi" >> "$BASHRC_FILE"
 			echo "I: Added script resume logic to .bashrc."
+			echo "To continue script after reboot login to the shell with current user."
 			echo "N: Don't add anything else to .bashrc while script is running."
 		else
 			echo ".bashrc already contains the resume logic."
@@ -72,14 +67,14 @@ case $STEP in
 		echo "I: Step 0: Making kernel configuration changes..."
         # Step 0
 		
-		# If SKIP_CHECKS is true, skip the checks
-		if [ "$SKIP_CHECKS" != "true" ]; then
+		# If SKIP_CHECKS is 1, skip the checks
+		if [ "$SKIP_CHECKS" -eq 0 ]; then
 		    # Check OS compatibility
 		    os_info=$(hostnamectl status | grep "Operating System:" | cut -d: -f2 | xargs)
 		    if [ "$os_info" != "Debian GNU/Linux 12 (bookworm)" ]; then
 		        echo "E: OS does not match an OS where the script was tested on. Exiting."
-		        echo "I: If you still want to try the automatic installation (which will likely work), edit the script to ignore these checks."
-		        echo "I: To do this, enter an editor and uncomment the following line at the top of the script: 'SKIP_CHECKS=true'"
+		        echo "I: If you still want to try the automatic installation (which might work), edit the script to ignore these checks."
+		        echo "I: To do this, enter an editor and uncomment the following line at the top of the script: 'SKIP_CHECKS=1'"
 		        echo "I: If your untested OS works, please open an issue at https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues for this OS to be added."
 		        exit 1
 		    fi
@@ -89,17 +84,16 @@ case $STEP in
 		    if [ "$(uname -m)" != "aarch64" ]; then
 		        echo "E: Architecture is not 64-bit. Exiting."
 		        echo "I: If you still want to try the automatic installation, edit the script to ignore these checks."
-		        echo "I: To do this, enter an editor and uncomment the following line at the top of the script: 'SKIP_CHECKS=true'"
+		        echo "I: To do this, enter an editor and uncomment the following line at the top of the script: 'SKIP_CHECKS=1'"
 		        echo "I: If your untested architecture works, please open an issue at https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues for this architecture to be added."
 		        exit 1
 		    fi
 		    echo "I: Architecture used is supported"
 		else
-		    echo "I: The OS and Architecture checks were skipped because SKIP_CHECKS=true was set."
+		    echo "I: The OS and Architecture checks were skipped because SKIP_CHECKS was equal to 1."
 		fi
-		
+		echo "I: OS used is supported"
 		echo "I: Home Assistant Supervised will now be installed:"
-
 		
 		# Kernel config
 		echo "I: Adding kernel configurations..."
@@ -141,34 +135,60 @@ case $STEP in
 
 		
 		# Installation of Dependencies
-		echo "I: Installing dependencies..."
+		echo "I: Installing dependencies for Homeassistant..."
 		apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote cifs-utils lsb-release nfs-common systemd-resolved -y
 		systemctl restart systemd-resolved.service
 
 		# Downloading and installing OS-Agent
-		echo "I: Downloading and installing OS-Agent..."
+		echo "I: Downloading OS-Agent..."
 		wget -O os-agent_linux_aarch64.deb $(curl -s https://api.github.com/repos/home-assistant/os-agent/releases/latest | grep "browser_download_url.*linux_aarch64.deb" | cut -d '"' -f 4)
-		dpkg -i os-agent_linux_aarch64.deb || { echo "Error: OS-Agent installation failed." >&2; exit 1; }
+        echo "I: Installing OS-Agent..."
+		dpkg -i os-agent_linux_aarch64.deb || { echo "E: OS-Agent installation failed." >&2; exit 1; }
+        echo "I: OS-Agent was succesfully installed."
 
 		# Downloading and installing Home Assistant Supervised
-		echo "I: Downloading and installing Home Assistant Supervised..."
+		echo "I: Downloading Home Assistant Supervised..."
 		wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
-		apt install ./homeassistant-supervised.deb -y || { echo "Error: Home Assistant Supervised installation failed." >&2; exit 1; }
-		
-		# Removing .bashrc content
-		sed -i '/# Run script after reboot if it'\''s incomplete/,/fi/d' "$BASHRC_FILE"
-		echo "Removed added content from .bashrc"
-		
-		hostname=$(hostname)
-		echo "I: Installation is now finished. Your system will restart soon."
-		echo "N: A reboot is now required."
-		echo "I: After the reboot, you will be able to reach Home Assistant at http://$hostname:8123"
+        echo "I: Installing Home Assistant Supervised..."
+        echo "In the next step you get to select the maschine type for homeassistant-supervised."
+        echo "You have to select 'pi5-64bit'. Press enter to continue."
+		read -r continue_maschine_type
+		apt install ./homeassistant-supervised.deb -y || { echo "E: Home Assistant Supervised installation failed." >&2; exit 1; }
+		echo "I: Homeassistant Supervised was succesfully installed."
+        
+        echo "I: A reboot is now required."
 		echo "I: System will reboot in 5 seconds."
-		sleep 5
         echo "2" > "$CONFIG_PROGRESS"
-		rm -f "$FLAG_FILE" "$CONFIG_PROGRESS"
-        echo "I: Script finished successfully!"
+        sleep 5
         reboot
+        ;;
+    2)
+        echo "I: Starting cleanup..."
+        # Removing .bashrc content
+        echo "I: Removing resume logic added to .bashrc..."
+        sed -i '/# Run script after reboot if it'\''s incomplete/,/fi/d' "$BASHRC_FILE"
+
+        # Removing flag file and progress file
+        echo "I: Removing configuration files..."
+        rm -f "$FLAG_FILE" "$CONFIG_PROGRESS"
+
+        # Removing downlaoded OS-Agent and homeassistant-supervised installer
+        echo "I: Removing downloaded installers..."
+        rm -f homeassistant-supervised.deb
+        rm -f os-agent_linux_aarch64.deb
+        
+        # Removing unused packages
+        apt autoremove -y
+        
+        
+        sleep 10
+        echo "I: Finished cleanup."
+
+
+        hostname=$(hostname)
+        echo "I: You are now able to reach Home Assistant at http://$hostname:8123. Keep in mind, it could take some time to start Homeassistant."
+        sleep 2
+        echo "I: Script finished successfully!"
         ;;
     *)
         echo "E: Unknown state. Aborting."
