@@ -90,35 +90,35 @@ Operating System: Debian GNU/Linux 12 (bookworm)
 It is possible to install Homeassistant Supervised by using my [script](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/development/installHomeassistant.sh).
 It might not work for everyone on every device. If the script worked for you (on a non-Debian Bookworm, arm64 installation) or it didn't work for you, please open a issue [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues) and let me know.
 To download and run the script, execute the following:
-```
+```bash
 sudo wget https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/raw/main/installHomeassistant.sh -O installHomeassistant.sh && sudo chmod +x installHomeassistant.sh && sudo sh ./installHomeassistant.sh
 ```
 ## kernel setup
 Add the configurations to the config.txt and cmdline.txt files and reboot by using this command.
-```
+```bash
 sudo bash -c 'grep -q "kernel=kernel8.img" /boot/firmware/config.txt || sed -i "1s/^/kernel=kernel8.img\n/" /boot/firmware/config.txt; grep -q "apparmor=1 security=apparmor" /boot/firmware/cmdline.txt || (sed -z "$ s/\n$//" /boot/firmware/cmdline.txt > /tmp/cmdline.txt && mv /tmp/cmdline.txt /boot/firmware/cmdline.txt && printf " apparmor=1 security=apparmor" >> /boot/firmware/cmdline.txt)' && sudo reboot
 ````
 # Making your system ready to run Homeassistant
 ## Installation of docker and docker-compose
 Download and Install [Docker-ce](https://github.com/docker-archive/docker-ce/) and [Docker compose](https://github.com/docker/compose).
-```
+```bash
 sudo apt install curl -y && sudo curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && sudo rm get-docker.sh && sudo apt install -y libffi-dev libssl-dev python3-dev python3 python3-pip && sudo apt install docker-compose -y && sudo systemctl enable docker && user=$(whoami) && sudo usermod -aG docker $user && sudo mkdir -p $HOME/docker-data
 ```
 
 You can check if the docker-installation works by using the following command
-```
+```bash
 sudo docker run hello-world
 ```
 > [!TIP]
 > If you want to run Portainer as well, take a look [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#use-portainer-anyway).
 ## Installation of Homeassistant dependencies
 Change to root:
-```
+```bash
 sudo su -
 ```
 
 Update all Packages on your Device, install all the required Dependencies and fix name resolution by using the following command
-```
+```bash
 apt update && apt upgrade -y && apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote cifs-utils lsb-release nfs-common systemd-resolved -y && systemctl restart systemd-resolved.service
 ```
 
@@ -126,18 +126,18 @@ apt update && apt upgrade -y && apt install apparmor jq wget curl udisks2 libgli
 Now, we'll download OS-Agent, required by Homeassistant by using the following command.
 > [!NOTE]  
 > The following command will always download the latest release of OS-Agent automatically from [here](https://github.com/home-assistant/os-agent/releases) for aarch64.
-```
+```bash
 wget -O os-agent_linux_aarch64.deb $(curl -s https://api.github.com/repos/home-assistant/os-agent/releases/latest | grep "browser_download_url.*linux_aarch64.deb" | cut -d '"' -f 4)
 ```
 
 ## Install os-agent
 To install os-agnet, we use dpkg with the install parameter
-```
+```bash
 dpkg -i os-agent_linux_aarch64.deb
 ```
 
 You can test if the installation was successful by running:
-```
+```bash
 sudo apt install -y libglib2.0-bin && gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
 ```
 This should **NOT** return an error.
@@ -147,7 +147,7 @@ You can check your output with the correct Output [here](https://github.com/Huck
 Download the Homeassistant Supervised Installer by using the following command:
 > [!NOTE]  
 > The following command will always download the latest release of Homeassistant Supervised from [here](https://github.com/home-assistant/supervised-installer/releases/)
-```
+```bash
 wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
 ```
 
@@ -156,7 +156,7 @@ To install execute the following command.
 During the Installation, you get asked “Select machine type”.
 Choose the "pi5-64bit" version like shown [here](https://www.uugear.com/wordpress/wp-content/uploads/2024/04/HAS_model.jpg)
 
-```
+```bash
 apt install ./homeassistant-supervised.deb -y
 ```
 
@@ -174,7 +174,7 @@ Near the end there should be this output.
 After setup is finished without errors, you can go on.
 
 Restart your **entire** system with the following command.
-```
+```bash
 reboot
 ```
 > [!TIP]
@@ -186,11 +186,11 @@ Make sure to use **http** and **NOT** https.
 You can also use the hostname that you set, like shown in the second example.
 To find out your Pi's IP you can use the following command.
 The standard homeassistant port is **8123**.
-```
+```bash
 echo "http://$(hostname -I | cut -d ' ' -f 1):8123"
 ```
 E.g.: http://192.168.2.5:8123
-```
+```bash
 echo "http://$(hostname):8123"
 ```
 E.g.: http://raspberrypi:8123
@@ -201,12 +201,12 @@ E.g.: http://raspberrypi:8123
 # Troubleshooting
 ## Error while installing Homeassistant-Supervised.deb caused by wrong os-agent
 If something goes wrong with the Installation of Homeassistant Installer, you can try to uninstall the OS-Agent with the following
-```
+```bash
 sudo dpkg -r os-agent
 ```
 After that you can download the right version for your device [here](https://github.com/home-assistant/os-agent/releases) .
 Now, install the OS-Agent again.
-```
+```bash
 dpkg -i os-agent_linux_aarch64.deb
 ```
 You should now be able to follow [the steps above](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#download-homeassistant-supervised) again
@@ -220,11 +220,11 @@ To do this, follow these steps:
 > If you have any Portainer images/container on your device, you may delete them (after backing them up).
 
 Now pull the latest image of portainer using the following command:
-```
+```bash
 sudo docker pull portainer/portainer-ce:latest
 ```
 Now, rename the downloaded image to e.g. 'iamnotportainer'
-```
+```bash
 sudo docker tag portainer/portainer-ce:latest iamnotportainer
 ```
 Now start a new docker container using docker compose
@@ -246,13 +246,13 @@ volumes:
   data:
 ```
 You can now check, if the container was named e.g. iamnotportainer using the following command.
-```
+```bash
 sudo docker ps -a
 ```
 After that you can restart Homeassistant from the GUI
 
 If the error persists, you can execute the following errors, to restart docker:
-```
+```bash
 sudo systemctl daemon-reload && sudo systemctl restart docker
 ```
 
@@ -277,16 +277,15 @@ If you get the following message in your docker logs:
 > level=error msg="add cg to OOM monitor" error="cgroups: memory cgroup not supported on this system"
 
  Fix it by adding "cgroup_memory=1" and "cgroup_enable=memory" in /boot/firmware/cmdline.txt:
-```
+```bash
 sudo nano /boot/firmware/cmdline.txt
-
 ```
 Add this to cmdline.txt:
-```
+```bash
 cgroup_memory=1 cgroup_enable=memory
 ```
 And now reboot your system:
-```
+```bash
 sudo reboot
 ```
 For further information, take a look [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/1#issuecomment-1958383687) and [here](https://github.com/moby/moby/issues/35587)
