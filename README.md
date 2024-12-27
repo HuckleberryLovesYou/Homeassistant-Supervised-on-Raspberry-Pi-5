@@ -204,43 +204,56 @@ If something goes wrong with the Installation of Homeassistant Installer, you ca
 ```
 sudo dpkg -r os-agent
 ```
-After that you can download the right version of the os-agent and reinstall it.
+After that you can download the right version for your device [here](https://github.com/home-assistant/os-agent/releases) .
+Now, install the OS-Agent again.
 ```
-dpkg -i os-agent_%Your Version Number%_linux_x86_64.deb
+dpkg -i os-agent_linux_aarch64.deb
 ```
-Now, install Homeassistant with the same command as mentioned above, because it already overwrites everything.
+You should now be able to follow [the steps above](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#download-homeassistant-supervised) again
 
 
 ## Use Portainer anyway
-To bypass the container name check, you have to name the portainer-container differently.
-Remove any old Portainer images like shown below:
-```
-sudo docker rmi portainer/portainer-ce
-```
-Now pull the image again.
+If Homeassistant is running, it checks all running containers, for containers which are named after big Docker-Swarm UI's.
+To bypass this check, you will have to rename the image of portainer, as well as the container name.
+To do this, follow these steps:
+> [!NOTE]  
+> If you have any Portainer images/container on your device, you may delete them (after backing them up).
+
+Now pull the latest image of portainer using the following command:
 ```
 sudo docker pull portainer/portainer-ce:latest
 ```
-Now rename the image
+Now, rename the downloaded image to e.g. 'iamnotportainer'
 ```
-sudo docker tag  portainer/portainer-ce:latest iamnotportainer
+sudo docker tag portainer/portainer-ce:latest iamnotportainer
 ```
-Now start a docker-container
+Now start a new docker container using docker compose
+`compose.yaml`
+```yaml
+services:
+  portainer:
+    image: iamnotportainer
+    container_name: iamnotportainer
+    ports:
+      # - 8000:8000 # uncomment this line, if you have portainer agents running
+      - 9443:9443
+    volumes:
+      - <Your oath to files here>:/data
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart: always
+
+volumes:
+  data:
 ```
-sudo docker run -d -p 9000:9000 -p 8000:8000 --name iamnotportainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data iamnotportainer
-```
-Now check if the container was named the right way
+You can now check, if the container was named e.g. iamnotportainer using the following command.
 ```
 sudo docker ps -a
 ```
-After that you can restart HA
+After that you can restart Homeassistant from the GUI
 
-If you run into any problems, you might want to try the following commands:
+If the error persists, you can execute the following errors, to restart docker:
 ```
-sudo systemctl daemon-reload
-```
-```
-sudo systemctl restart docker
+sudo systemctl daemon-reload && sudo systemctl restart docker
 ```
 
 ## No Audio on Host after Homeassisant Supervised Installation
