@@ -144,9 +144,9 @@ This should **NOT** return an error.
 You can check your output with the correct Output [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/main/gdbus-introspect_Output.xml)
 # Install Homeassistant
 ## Download Homeassistant-supervised
-By using the following command you automatically download the latest version of Homeassistant.
-Today, the newest version is 1.6.0.
-You can also check for the lastest version [here](https://github.com/home-assistant/supervised-installer/releases/)
+Download the Homeassistant Supervised Installer by using the following command:
+> [!NOTE]  
+> The following command will always download the latest release of Homeassistant Supervised from [here](https://github.com/home-assistant/supervised-installer/releases/)
 ```
 wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
 ```
