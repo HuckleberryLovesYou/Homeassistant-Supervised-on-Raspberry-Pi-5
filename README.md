@@ -79,10 +79,16 @@ Operating System: Debian GNU/Linux 12 (bookworm)
 - Privileges to change to root
 # Installation
 ## Automatic Installation
-**BETA**
-It is possible to install Homeassistant Supervised by using my [script](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/development/installHomeassistant.sh). This script is still beta. This means, that the script might not work on every os and Architecture or to produce unexpected behaviour. 
-It might not work for everyone on every device. If the script worked for you or it didn't work for you, please open a issue [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues) and let me know.
-**NOTE:** The script is only tested with execution as root user. The script still requires a few interacions.
+> [!IMPORTANT]  
+> The following script is still in **BETA**. This means, it might not work, and produce unexpected or unwanted behavior.
+
+> [!NOTE]  
+> The script is only tested with execution as root user.
+> The script still requires a few interacions.
+
+
+It is possible to install Homeassistant Supervised by using my [script](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/development/installHomeassistant.sh).
+It might not work for everyone on every device. If the script worked for you (on a non-Debian Bookworm, arm64 installation) or it didn't work for you, please open a issue [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues) and let me know.
 To download and run the script, execute the following:
 ```
 sudo wget https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/raw/main/installHomeassistant.sh -O installHomeassistant.sh && sudo chmod +x installHomeassistant.sh && sudo sh ./installHomeassistant.sh
@@ -103,21 +109,23 @@ You can check if the docker-installation works by using the following command
 ```
 sudo docker run hello-world
 ```
-**If you want to run Portainer as well, take a look [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#use-portainer-anyway)**
+> [!TIP]
+> If you want to run Portainer as well, take a look [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#use-portainer-anyway).
 ## Installation of Homeassistant dependencies
-From now on, everything needs to be executed as root and does **NOT** support sudo anymore.
-So, change to root:
+Change to root:
 ```
 sudo su -
 ```
 
-Update every Package on your Device and install all the required Dependencies. 
+Update all Packages on your Device, install all the required Dependencies and fix name resolution by using the following command
 ```
 apt update && apt upgrade -y && apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote cifs-utils lsb-release nfs-common systemd-resolved -y && systemctl restart systemd-resolved.service
 ```
 
 ## Download os-agent
-Now, we'll download the latest version of OS-Agent, required by Homeassistant, automatically from [here](https://github.com/home-assistant/os-agent/releases) by using the following command.
+Now, we'll download OS-Agent, required by Homeassistant by using the following command.
+> [!NOTE]  
+> The following command will always download the latest release of OS-Agent automatically from [here](https://github.com/home-assistant/os-agent/releases) for aarch64.
 ```
 wget -O os-agent_linux_aarch64.deb $(curl -s https://api.github.com/repos/home-assistant/os-agent/releases/latest | grep "browser_download_url.*linux_aarch64.deb" | cut -d '"' -f 4)
 ```
@@ -145,12 +153,12 @@ wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervise
 
 ## Installation of Homeassistant-supervised
 To install execute the following command.
+During the Installation, you get asked “Select machine type”.
+Choose the "pi5-64bit" version like shown [here](https://www.uugear.com/wordpress/wp-content/uploads/2024/04/HAS_model.jpg)
+
 ```
 apt install ./homeassistant-supervised.deb -y
 ```
-
-During the Installation, you get asked “Select machine type”.
-Choose the "pi5-64bit" version like shown [here](https://www.uugear.com/wordpress/wp-content/uploads/2024/04/HAS_model.jpg)
 
 Near the end there should be this output.
 ```
@@ -169,7 +177,9 @@ Restart your **entire** system with the following command.
 ```
 reboot
 ```
-If you get the error "Depends: docker-ce but it is not installable" take a look at [here #5](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/5)
+> [!TIP]
+> If you get the error "Depends: docker-ce but it is not installable" take a look at [here #5](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/5)
+
 # Accessing your Homeassistant Web page
 Access your Homeassistant-GUI by entering the following in your browser’s address bar.
 Make sure to use **http** and **NOT** https.
