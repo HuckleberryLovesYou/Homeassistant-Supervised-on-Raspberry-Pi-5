@@ -2,7 +2,7 @@
 This is a tutorial about the installation of Homeassistant Supervised on your Raspberry Pi 5 running Raspberry Pi OS 64bit.
 ### If something doesn't work, make sure to check out the Troubleshooting Section at the bottom of this README.
 
-## [Skip the blah](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#kernel-setup)
+## [Skip the blah](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5#automatic-installation)
 
 Didn't find a fix for your Problem? Feel free to open an issue in this repository!
 
