@@ -83,12 +83,12 @@ Operating System: Debian GNU/Linux 12 (bookworm)
 > The following script is still in **BETA**. This means, it might not work, and produce unexpected or unwanted behavior.
 
 > [!NOTE]  
-> The script is only tested with execution as root user.
+> The script is only tested with execution as root user. The script is only tested on an arm64 architecture with Raspberry Pi OS (based on Debian Bookworm)
 > The script still requires a few interacions.
 
 
 It is possible to install Homeassistant Supervised by using my [script](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/development/installHomeassistant.sh).
-It might not work for everyone on every device. If the script worked for you (on a non-Debian Bookworm, arm64 installation) or it didn't work for you, please open a issue [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues) and let me know.
+It might not work for everyone. If the script didn't work for you, please open a issue [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues) and let me know.
 To download and run the script, execute the following:
 ```bash
 sudo wget https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/raw/main/installHomeassistant.sh -O installHomeassistant.sh && sudo chmod +x installHomeassistant.sh && sudo sh ./installHomeassistant.sh
@@ -119,7 +119,7 @@ sudo su -
 
 Update all Packages on your Device, install all the required Dependencies and fix name resolution by using the following command
 ```bash
-apt update && apt upgrade -y && apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote cifs-utils lsb-release nfs-common systemd-resolved -y && systemctl restart systemd-resolved.service
+apt update -y && apt upgrade -y && apt install apparmor jq wget curl udisks2 libglib2.0-bin network-manager dbus systemd-journal-remote cifs-utils lsb-release nfs-common systemd-resolved -y && systemctl restart systemd-resolved.service
 ```
 
 ## Download os-agent
