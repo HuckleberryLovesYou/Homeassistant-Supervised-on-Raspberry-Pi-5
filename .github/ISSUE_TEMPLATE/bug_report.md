@@ -9,6 +9,7 @@ assignees: ''
 
 **Describe the bug**
 A clear and concise description of what the bug is.
+If you used the script installation, please use the issue template for script installation. 
 
 **To Reproduce**
 Steps to reproduce the behavior:
@@ -34,4 +35,3 @@ My configuration.yaml file:
 My Homeassistant Core log file:
 My Homeassistant Supervisor log file:
 My Homeassistant Host log file:
-If you used the installer script, please provide the log from /tmp/installHomeassistantSupervised.log:
