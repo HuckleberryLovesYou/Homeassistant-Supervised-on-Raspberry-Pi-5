@@ -151,7 +151,7 @@ case $STEP in
 		wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
         echo "I: Installing Home Assistant Supervised..."
         echo "In the next step you get to select the maschine type for homeassistant-supervised."
-        echo "You have to select 'pi5-64bit'. Press enter to continue."
+        echo "You have to select 'raspberrypi5-64'. Press enter to continue."
 		read -r continue_maschine_type
 		apt install ./homeassistant-supervised.deb -y || { echo "E: Home Assistant Supervised installation failed." >&2; exit 1; }
 		echo "I: Homeassistant Supervised was succesfully installed."

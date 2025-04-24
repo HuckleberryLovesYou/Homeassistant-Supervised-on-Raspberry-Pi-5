@@ -154,7 +154,7 @@ wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervise
 ## Installation of Homeassistant-supervised
 To install execute the following command.
 During the Installation, you get asked “Select machine type”.
-Choose the "pi5-64bit" version like shown [here](https://www.uugear.com/wordpress/wp-content/uploads/2024/04/HAS_model.jpg)
+Choose the "raspberrypi5-64" version like shown [here](https://www.uugear.com/wordpress/wp-content/uploads/2024/04/HAS_model.jpg)
 
 ```bash
 apt install ./homeassistant-supervised.deb -y
