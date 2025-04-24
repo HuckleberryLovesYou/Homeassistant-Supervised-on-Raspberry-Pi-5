@@ -40,6 +40,7 @@ case $STEP in
 		echo "I: Re-running the script may break the system. Follow manual steps instead."
 		echo "I: The script has to reboot the system multiple times. Save your work before continuing"
 		echo "I: You'll get prompted to resume the script after every reboot."
+		echo "I: You'll have to sign back in, after the reboot and change to the root user using 'sudo su - to continue the install automatically."
 		echo "Do you want to continue (y/n)"
 		read -r continue
 		if [[ $continue != "y" ]]; then
@@ -57,8 +58,8 @@ case $STEP in
 			echo "    $SCRIPT_PATH" >> "$BASHRC_FILE"
 			echo "fi" >> "$BASHRC_FILE"
 			echo "I: Added script resume logic to .bashrc."
-			echo "To continue script after reboot login to the shell with current user."
-			echo "N: Don't add anything else to .bashrc while script is running."
+			echo "To continue script after reboot login to the shell with the root user."
+			echo "I: Don't add anything else to .bashrc while script is running."
 		else
 			echo ".bashrc already contains the resume logic."
 		fi
@@ -92,7 +93,6 @@ case $STEP in
 		else
 		    echo "I: The OS and Architecture checks were skipped because SKIP_CHECKS was equal to 1."
 		fi
-		echo "I: OS used is supported"
 		echo "I: Home Assistant Supervised will now be installed:"
 		
 		# Kernel config
