@@ -85,6 +85,7 @@ Operating System: Debian GNU/Linux 12 (bookworm)
 > [!NOTE]  
 > The script is only tested with execution as root user. The script is only tested on an arm64 architecture with Raspberry Pi OS (based on Debian Bookworm).
 > The script still requires a few interactions.
+> After every reboot you will have to log into the root user and the script should start automatically again from where it left off.
 
 
 It is possible to install Homeassistant Supervised by using my [script](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/main/installHomeassistant.sh).
