@@ -84,14 +84,14 @@ Operating System: Debian GNU/Linux 12 (bookworm)
 
 > [!NOTE]  
 > The script is only tested with execution as root user. The script is only tested on an arm64 architecture with Raspberry Pi OS (based on Debian Bookworm).
-> The script still requires a few interacions.
+> The script still requires a few interactions.
 
 
 It is possible to install Homeassistant Supervised by using my [script](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/main/installHomeassistant.sh).
 It might not work for everyone. If the script didn't work for you, please open a issue [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues) and let me know.
 To download and run the script, execute the following:
 ```bash
-sudo wget https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/raw/main/installHomeassistant.sh -O installHomeassistant.sh && sudo chmod +x installHomeassistant.sh && sudo sh ./installHomeassistant.sh
+sudo wget https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/raw/main/installHomeassistant.sh -O installHomeassistant.sh && sudo chmod +x installHomeassistant.sh && sudo ./installHomeassistant.sh
 ```
 ## kernel setup
 Add the configurations to the config.txt and cmdline.txt files and reboot by using this command.
@@ -154,7 +154,7 @@ wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervise
 ## Installation of Homeassistant-supervised
 To install execute the following command.
 During the Installation, you get asked “Select machine type”.
-Choose the "pi5-64bit" version like shown [here](https://www.uugear.com/wordpress/wp-content/uploads/2024/04/HAS_model.jpg)
+Choose the "raspberrypi5-64" version like shown [here](https://www.uugear.com/wordpress/wp-content/uploads/2024/04/HAS_model.jpg)
 
 ```bash
 apt install ./homeassistant-supervised.deb -y
