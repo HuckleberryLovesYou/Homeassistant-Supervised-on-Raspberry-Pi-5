@@ -1,15 +1,12 @@
 # Homeassistant-Supervised-on-Raspberry-Pi-5
 This is a tutorial about the installation of Homeassistant Supervised on your Raspberry Pi 5 running Raspberry Pi OS 64bit.
-### If something doesn't work, make sure to check out the Troubleshooting Section at the bottom of this README.
+If something doesn't work, make sure to check out the Troubleshooting Section at the bottom of this README.
+Didn't find a fix for your Problem or found something, that wasn't described good or wrong? Feel free to open an issue in this repository!
 
 > [!WARNING]  
 > Homeassistant Supervised will deprecated with Version 2025.12. After that Homeassistant Supervised - nor Homeassistant Core - will receive updates or official support. You can still install it and use it afterwards, but this is not recommended by Homeassistant. More info [here](https://www.home-assistant.io/blog/2025/05/22/deprecating-core-and-supervised-installation-methods-and-32-bit-systems/)
 
-## [Skip to Installation](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5#automatic-installation)
-
-Didn't find a fix for your Problem? Feel free to open an issue in this repository!
-
-Found something, that wasn't described good or wrong? Feel free to open an issue in this repository!
+#### [Skip to Installation](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5#automatic-installation)
 
 ## Contents
 - [Introduction](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#introduction)
@@ -35,7 +32,7 @@ Found something, that wasn't described good or wrong? Feel free to open an issue
    - [Docker Issue: cgroups: memory cgroup not supported on this system](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#docker-issue-cgroups-memory-cgroup-not-supported-on-this-system)
 
 # Introduction
-## First of all - Why even HA-Supervised? 
+## Why even Homeassistant-Supervised? 
 It's pretty simple:
 
 ```python
