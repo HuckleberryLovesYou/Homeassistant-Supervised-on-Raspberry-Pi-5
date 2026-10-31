@@ -97,13 +97,16 @@ sudo wget https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Ras
 ## Kernel Setup
 Add the configurations to the config.txt and cmdline.txt files and reboot by using this command.
 ```bash
-sudo bash -c 'grep -q "kernel=kernel8.img" /boot/firmware/config.txt || sed -i "1s/^/kernel=kernel8.img\n/" /boot/firmware/config.txt; grep -q "apparmor=1 security=apparmor" /boot/firmware/cmdline.txt || (sed -z "$ s/\n$//" /boot/firmware/cmdline.txt > /tmp/cmdline.txt && mv /tmp/cmdline.txt /boot/firmware/cmdline.txt && printf " apparmor=1 security=apparmor" >> /boot/firmware/cmdline.txt)' && sudo reboot
-````
+sudo bash -c 'cp -n /boot/firmware/config.txt /boot/firmware/config.txt.bak; cp -n /boot/firmware/cmdline.txt /boot/firmware/cmdline.txt.bak; grep -q "kernel=kernel8.img" /boot/firmware/config.txt || sed -i "1s/^/kernel=kernel8.img\n/" /boot/firmware/config.txt; grep -q "apparmor=1 security=apparmor" /boot/firmware/cmdline.txt || (sed -z "$ s/\n$//" /boot/firmware/cmdline.txt > /tmp/cmdline.txt && mv /tmp/cmdline.txt /boot/firmware/cmdline.txt && printf " apparmor=1 security=apparmor" >> /boot/firmware/cmdline.txt)' && sudo reboot
+```
+> [!NOTE]  
+> This command creates backups (`config.txt.bak` and `cmdline.txt.bak`) before modifying your boot configuration.
+
 # Making your system ready to run Homeassistant
 ## Installation of docker and docker-compose
 Download and Install [Docker-ce](https://github.com/docker-archive/docker-ce/) and [Docker compose](https://github.com/docker/compose).
 ```bash
-sudo apt install curl -y && sudo curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && sudo rm get-docker.sh && sudo apt install -y libffi-dev libssl-dev python3-dev python3 python3-pip && sudo apt install docker-compose-plugin -y && sudo systemctl enable docker && user=$(whoami) && sudo usermod -aG docker $user && sudo mkdir -p $HOME/docker-data
+sudo apt install curl -y && sudo curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && sudo rm get-docker.sh && sudo apt install docker-compose-plugin -y && sudo systemctl enable docker && user=$(whoami) && sudo usermod -aG docker $user && sudo mkdir -p $HOME/docker-data
 ```
 
 You can check if the docker-installation works by using the following command

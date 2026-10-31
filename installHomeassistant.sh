@@ -96,7 +96,9 @@ case $STEP in
 		echo "I: Home Assistant Supervised will now be installed:"
 		
 		# Kernel config
-		echo "I: Adding kernel configurations..."
+		echo "I: Backing up and adding kernel configurations..."
+		cp -n /boot/firmware/config.txt /boot/firmware/config.txt.bak 2>/dev/null || true
+		cp -n /boot/firmware/cmdline.txt /boot/firmware/cmdline.txt.bak 2>/dev/null || true
 		if ! grep -q "kernel=kernel8.img" /boot/firmware/config.txt; then
 			sed -i '1s/^/kernel=kernel8.img\n/' /boot/firmware/config.txt # adds string at the top of the file
 		fi
@@ -124,7 +126,7 @@ case $STEP in
 		curl -fsSL https://get.docker.com -o get-docker.sh
 		sh get-docker.sh
 		rm get-docker.sh
-		apt install -y libffi-dev libssl-dev python3-dev python3 python3-pip docker-compose-plugin
+		apt install -y docker-compose-plugin
 		systemctl enable docker
 		user=$(whoami)
 		usermod -aG docker $user
