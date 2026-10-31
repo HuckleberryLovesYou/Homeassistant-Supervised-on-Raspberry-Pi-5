@@ -72,7 +72,7 @@ case $STEP in
 		if [ "$SKIP_CHECKS" -eq 0 ]; then
 		    # Check OS compatibility
 		    os_info=$(hostnamectl status | grep "Operating System:" | cut -d: -f2 | xargs)
-		    if [ "$os_info" != "Debian GNU/Linux 12 (bookworm)" ]; then
+		    if [ "$os_info" != "Debian GNU/Linux 12 (bookworm)" ] && [ "$os_info" != "Debian GNU/Linux 13 (trixie)" ]; then
 		        echo "E: OS does not match an OS where the script was tested on. Exiting."
 		        echo "I: If you still want to try the automatic installation (which might work), edit the script to ignore these checks."
 		        echo "I: To do this, enter an editor and uncomment the following line at the top of the script: 'SKIP_CHECKS=1'"
@@ -124,7 +124,7 @@ case $STEP in
 		curl -fsSL https://get.docker.com -o get-docker.sh
 		sh get-docker.sh
 		rm get-docker.sh
-		apt install -y libffi-dev libssl-dev python3-dev python3 python3-pip docker-compose
+		apt install -y libffi-dev libssl-dev python3-dev python3 python3-pip docker-compose-plugin
 		systemctl enable docker
 		user=$(whoami)
 		usermod -aG docker $user

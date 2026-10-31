@@ -69,9 +69,9 @@ What could be the problem with having an unsupported system?
 
 ## Requirements
 - Access to the Terminal of your Raspberry Pi 5 (SSH recommended)
-- OS: Raspberry Pi OS (based on Debian Bookworm) (can be checked with `hostnamectl`)
+- OS: Raspberry Pi OS (based on Debian Bookworm or Trixie) (can be checked with `hostnamectl`)
 ```
-Operating System: Debian GNU/Linux 12 (bookworm)
+Operating System: Debian GNU/Linux 12 (bookworm) # or Debian GNU/Linux 13 (trixie)
           Kernel: Linux 6.1.0-rpi8-rpi-v8
     Architecture: arm64
 ```
@@ -83,7 +83,7 @@ Operating System: Debian GNU/Linux 12 (bookworm)
 > The following script is still in **BETA**. This means, it might not work, and produce unexpected or unwanted behavior.
 
 > [!NOTE]  
-> The script is only tested with execution as root user. The script is only tested on an arm64 architecture with Raspberry Pi OS (based on Debian Bookworm).
+> The script is only tested with execution as root user. The script is tested on an arm64 architecture with Raspberry Pi OS (based on Debian Bookworm or Trixie).
 > The script still requires a few interactions.
 > After every reboot you will have to log into the root user and the script should start automatically again from where it left off.
 
@@ -103,7 +103,7 @@ sudo bash -c 'grep -q "kernel=kernel8.img" /boot/firmware/config.txt || sed -i "
 ## Installation of docker and docker-compose
 Download and Install [Docker-ce](https://github.com/docker-archive/docker-ce/) and [Docker compose](https://github.com/docker/compose).
 ```bash
-sudo apt install curl -y && sudo curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && sudo rm get-docker.sh && sudo apt install -y libffi-dev libssl-dev python3-dev python3 python3-pip && sudo apt install docker-compose -y && sudo systemctl enable docker && user=$(whoami) && sudo usermod -aG docker $user && sudo mkdir -p $HOME/docker-data
+sudo apt install curl -y && sudo curl -fsSL https://get.docker.com -o get-docker.sh && sudo sh get-docker.sh && sudo rm get-docker.sh && sudo apt install -y libffi-dev libssl-dev python3-dev python3 python3-pip && sudo apt install docker-compose-plugin -y && sudo systemctl enable docker && user=$(whoami) && sudo usermod -aG docker $user && sudo mkdir -p $HOME/docker-data
 ```
 
 You can check if the docker-installation works by using the following command
