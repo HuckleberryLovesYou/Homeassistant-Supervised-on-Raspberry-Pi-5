@@ -130,7 +130,7 @@ case $STEP in
 		usermod -aG docker $user
 		mkdir -p "$HOME/docker-data"
 		echo "I: A directory was created for your docker data."
-		echo "I: You can change the location, but it makes sense to store your data in a organized file structure."
+		echo "I: You can change the location, but it makes sense to store your data in an organized file structure."
 		echo "I: You need to log out and back in for Docker group changes to take effect."
 
 		
@@ -144,17 +144,17 @@ case $STEP in
 		wget -O os-agent_linux_aarch64.deb $(curl -s https://api.github.com/repos/home-assistant/os-agent/releases/latest | grep "browser_download_url.*linux_aarch64.deb" | cut -d '"' -f 4)
         echo "I: Installing OS-Agent..."
 		dpkg -i os-agent_linux_aarch64.deb || { echo "E: OS-Agent installation failed." >&2; exit 1; }
-        echo "I: OS-Agent was succesfully installed."
+        echo "I: OS-Agent was successfully installed."
 
 		# Downloading and installing Home Assistant Supervised
 		echo "I: Downloading Home Assistant Supervised..."
 		wget -O homeassistant-supervised.deb https://github.com/home-assistant/supervised-installer/releases/latest/download/homeassistant-supervised.deb
         echo "I: Installing Home Assistant Supervised..."
-        echo "In the next step you get to select the maschine type for homeassistant-supervised."
+        echo "In the next step you get to select the machine type for homeassistant-supervised."
         echo "You have to select 'raspberrypi5-64'. Press enter to continue."
-		read -r continue_maschine_type
+		read -r continue_machine_type
 		apt install ./homeassistant-supervised.deb -y || { echo "E: Home Assistant Supervised installation failed." >&2; exit 1; }
-		echo "I: Homeassistant Supervised was succesfully installed."
+		echo "I: Homeassistant Supervised was successfully installed."
         
         echo "I: A reboot is now required."
 		echo "I: System will reboot in 5 seconds."
@@ -172,7 +172,7 @@ case $STEP in
         echo "I: Removing configuration files..."
         rm -f "$FLAG_FILE" "$CONFIG_PROGRESS"
 
-        # Removing downlaoded OS-Agent and homeassistant-supervised installer
+        # Removing downloaded OS-Agent and homeassistant-supervised installer
         echo "I: Removing downloaded installers..."
         rm -f homeassistant-supervised.deb
         rm -f os-agent_linux_aarch64.deb

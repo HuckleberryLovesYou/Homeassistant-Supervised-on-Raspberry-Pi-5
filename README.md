@@ -1,35 +1,35 @@
 # Homeassistant-Supervised-on-Raspberry-Pi-5
 This is a tutorial about the installation of Homeassistant Supervised on your Raspberry Pi 5 running Raspberry Pi OS 64bit.
 If something doesn't work, make sure to check out the Troubleshooting Section at the bottom of this README.
-Didn't find a fix for your Problem or found something, that wasn't described good or wrong? Feel free to open an issue in this repository!
+Didn't find a fix for your problem or found something that wasn't described well or was incorrect? Feel free to open an issue in this repository!
 
 > [!WARNING]  
 > Homeassistant Supervised will be deprecated with Version 2025.12. After that Homeassistant Supervised or Homeassistant Core will not receive any updates or any official support. You can still install it and use it afterwards, but this is not recommended by Homeassistant. More info [here](https://www.home-assistant.io/blog/2025/05/22/deprecating-core-and-supervised-installation-methods-and-32-bit-systems/)
 
-#### [Skip to Installation](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5#automatic-installation)
+#### [Skip to Installation](#automatic-installation)
 
 ## Contents
-- [Introduction](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#introduction)
-   - [Why even HA-Supervised?](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#first-of-all---why-even-ha-supervised)
-   - [Supported or Unsupported](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#supported-or-unsupported)
-   - [Requirements](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#requirements)
-- [Installation](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#installation)
-   - [Automatic Installation](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#Automatic-Installation)
-   - [kernel setup](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#kernel-setup)
-   - [Making your system ready to run Homeassistant](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#making-your-system-ready-to-run-homeassistant)
-      - [Installation of docker and docker-compose](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#installation-of-docker-and-docker-compose)
-      - [Installation of Homeassistant dependencies](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#installation-of-homeassistant-dependencies)
-      - [Download os-agent](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#download-os-agent)
-      - [Install os-agent](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#install-os-agent)
-   - [Install Homeassistant](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#install-homeassistant)
-      - [Download homeassistant-supervised](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#download-homeassistant-supervised)
-      - [Installation of Homeassistant-supervised](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#installation-of-homeassistant-supervised)
-- [Accessing your Homeassistant Website](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#accessing-your-homeassistant-web-page)
-- [Troubleshooting](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#troubleshooting)
-   - [Error while installing Homeassistant-Supervised.deb caused by wrong os-agent](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#error-while-installing-homeassistant-superviseddeb-caused-by-wrong-os-agent)
-   - [Use Portainer anyway](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#use-portainer-anyway)
-   - [Audio not working on Host](github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#no-audio-on-host-after-homeassisant-supervised-installation)
-   - [Docker Issue: cgroups: memory cgroup not supported on this system](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#docker-issue-cgroups-memory-cgroup-not-supported-on-this-system)
+- [Introduction](#introduction)
+   - [Why even HA-Supervised?](#why-even-homeassistant-supervised)
+   - [Supported or Unsupported](#supported-or-unsupported)
+   - [Requirements](#requirements)
+- [Installation](#installation)
+   - [Automatic Installation](#automatic-installation)
+   - [Kernel Setup](#kernel-setup)
+   - [Making your system ready to run Homeassistant](#making-your-system-ready-to-run-homeassistant)
+      - [Installation of docker and docker-compose](#installation-of-docker-and-docker-compose)
+      - [Installation of Homeassistant dependencies](#installation-of-homeassistant-dependencies)
+      - [Download os-agent](#download-os-agent)
+      - [Install os-agent](#install-os-agent)
+   - [Install Homeassistant](#install-homeassistant)
+      - [Download homeassistant-supervised](#download-homeassistant-supervised)
+      - [Installation of Homeassistant-supervised](#installation-of-homeassistant-supervised)
+- [Accessing your Homeassistant Web page](#accessing-your-homeassistant-web-page)
+- [Troubleshooting](#troubleshooting)
+   - [Error while installing Homeassistant-Supervised.deb caused by wrong os-agent](#error-while-installing-homeassistant-superviseddeb-caused-by-wrong-os-agent)
+   - [Use Portainer anyway](#use-portainer-anyway)
+   - [Audio not working on Host](#no-audio-on-host-after-homeassistant-supervised-installation)
+   - [Docker Issue: cgroups: memory cgroup not supported on this system](#docker-issue-cgroups-memory-cgroup-not-supported-on-this-system)
 
 # Introduction
 ## Why even Homeassistant-Supervised? 
@@ -88,13 +88,13 @@ Operating System: Debian GNU/Linux 12 (bookworm) # or Debian GNU/Linux 13 (trixi
 > After every reboot you will have to log into the root user and the script should start automatically again from where it left off.
 
 
-It is possible to install Homeassistant Supervised by using my [script](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/main/installHomeassistant.sh).
-It might not work for everyone. If the script didn't work for you, please open a issue [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues) and let me know.
+It is possible to install Homeassistant Supervised by using my [script](installHomeassistant.sh).
+It might not work for everyone. If the script didn't work for you, please open an issue [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues) and let me know.
 To download and run the script, execute the following:
 ```bash
 sudo wget https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/raw/main/installHomeassistant.sh -O installHomeassistant.sh && sudo chmod +x installHomeassistant.sh && sudo ./installHomeassistant.sh
 ```
-## kernel setup
+## Kernel Setup
 Add the configurations to the config.txt and cmdline.txt files and reboot by using this command.
 ```bash
 sudo bash -c 'grep -q "kernel=kernel8.img" /boot/firmware/config.txt || sed -i "1s/^/kernel=kernel8.img\n/" /boot/firmware/config.txt; grep -q "apparmor=1 security=apparmor" /boot/firmware/cmdline.txt || (sed -z "$ s/\n$//" /boot/firmware/cmdline.txt > /tmp/cmdline.txt && mv /tmp/cmdline.txt /boot/firmware/cmdline.txt && printf " apparmor=1 security=apparmor" >> /boot/firmware/cmdline.txt)' && sudo reboot
@@ -111,7 +111,7 @@ You can check if the docker-installation works by using the following command
 sudo docker run hello-world
 ```
 > [!TIP]
-> If you want to run Portainer as well, take a look [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#use-portainer-anyway).
+> If you want to run Portainer as well, take a look [here](#use-portainer-anyway).
 ## Installation of Homeassistant dependencies
 Change to root:
 ```bash
@@ -132,7 +132,7 @@ wget -O os-agent_linux_aarch64.deb $(curl -s https://api.github.com/repos/home-a
 ```
 
 ## Install os-agent
-To install os-agnet, we use dpkg with the install parameter
+To install os-agent, we use dpkg with the install parameter
 ```bash
 dpkg -i os-agent_linux_aarch64.deb
 ```
@@ -142,7 +142,7 @@ You can test if the installation was successful by running:
 sudo apt install -y libglib2.0-bin && gdbus introspect --system --dest io.hass.os --object-path /io/hass/os
 ```
 This should **NOT** return an error.
-You can check your output with the correct Output [here](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/blob/main/gdbus-introspect_Output.xml)
+You can check your output with the correct output [here](gdbus-introspect_Output.xml)
 # Install Homeassistant
 ## Download Homeassistant-supervised
 Download the Homeassistant Supervised Installer by using the following command:
@@ -210,11 +210,11 @@ Now, install the OS-Agent again.
 ```bash
 dpkg -i os-agent_linux_aarch64.deb
 ```
-You should now be able to follow [the steps above](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5?tab=readme-ov-file#download-homeassistant-supervised) again
+You should now be able to follow [the steps above](#download-homeassistant-supervised) again.
 
 
 ## Use Portainer anyway
-If Homeassistant is running, it checks all running containers, for containers which are named after big Docker-Swarm UI's.
+If Homeassistant is running, it checks all running containers, for containers which are named after big Docker-Swarm UIs.
 To bypass this check, you will have to rename the image of portainer, as well as the container name.
 To do this, follow these steps:
 > [!NOTE]  
@@ -239,7 +239,7 @@ services:
       # - 8000:8000 # uncomment this line, if you have portainer agents running
       - 9443:9443
     volumes:
-      - <Your oath to files here>:/data
+      - <Your path to files here>:/data
       - /var/run/docker.sock:/var/run/docker.sock
     restart: always
 
@@ -252,22 +252,22 @@ sudo docker ps -a
 ```
 After that you can restart Homeassistant from the GUI
 
-If the error persists, you can execute the following errors, to restart docker:
+If the error persists, you can execute the following commands to restart docker:
 ```bash
 sudo systemctl daemon-reload && sudo systemctl restart docker
 ```
 
-## No Audio on Host after Homeassisant Supervised Installation
+## No Audio on Host after Homeassistant Supervised Installation
 
-This section is reffering to [#21](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/21). For further information check out the issue.
+This section is referring to [#21](https://github.com/HuckleberryLovesYou/Homeassistant-Supervised-on-Raspberry-Pi-5/issues/21). For further information check out the issue.
 This problem might also cause no YouTube playback.
 To fix this problem follow these steps:
 1. Go to `Settings > Add-ons > ADD-ON Store`
-2. Add the the Repository 'https://github.com/OPHoperHPO/hassio-addons' to Homeassistant like the following:
+2. Add the repository 'https://github.com/OPHoperHPO/hassio-addons' to Homeassistant like the following:
 ![Click on three dots in upper right corner; Click on Repositories; Paste in the Repository link in; Click on Add; Click on Close](pictures/add-repository.png)
 3. Add the Add-on like shown in the following:
-![Click on three dots in upper right corner; Click on 'Update addon list'; Search for 'pulseaudio_fix in the search bar'; Click on the Add-on named 'Alsa & PulseAudio Fix' (not dev version); Click on Install](pictures/add-addon-to-ha.png)
-'Update add-on list' may take a few minutes or some retires
+![Click on three dots in upper right corner; Click on 'Update addon list'; Search for 'pulseaudio_fix' in the search bar; Click on the Add-on named 'Alsa & PulseAudio Fix' (not dev version); Click on Install](pictures/add-addon-to-ha.png)
+'Update add-on list' may take a few minutes or some retries
 4. Click on 'Install' to install the add-on
 5. Take a look in the logs of the add-on and search for the following line to ensure the fix worked: `[ALSA&PULSEAUDIO FIX][INFO] Module module-suspend-on-idle loaded successfully!`
 
